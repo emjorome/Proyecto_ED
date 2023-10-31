@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import modelo.Usuario;
 
 /**
  * FXML Controller class
@@ -23,7 +24,7 @@ public class InicioController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    ArrayList<String> lstUsuarios;
+    ArrayList<Usuario> lstUsuarios;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lstUsuarios = new ArrayList<>();
@@ -31,7 +32,7 @@ public class InicioController implements Initializable {
 
     public void cargarUsuarios(){
         try(ObjectInputStream oj = new ObjectInputStream(new FileInputStream("archivo.text"))){
-            lstUsuarios = (ArrayList<String>) oj.readObject();
+            lstUsuarios = (ArrayList<Usuario>) oj.readObject();
         }catch(FileNotFoundException f){
             f.printStackTrace();
         }catch(IOException io){
