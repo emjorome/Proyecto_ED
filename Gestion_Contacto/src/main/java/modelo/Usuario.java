@@ -11,10 +11,12 @@ package modelo;
 public class Usuario {
     private String usuario;
     private String contraseña;
+    private Contacto contacto;
 
-    public Usuario(String usuario, String contraseña) {
+    public Usuario(String usuario, String contraseña, Contacto contacto) {
         this.usuario = usuario;
         this.contraseña = contraseña;
+        this.contacto = contacto;
     }
 
     public String getUsuario() {
@@ -31,6 +33,14 @@ public class Usuario {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+    }
+    
+    public Contacto getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(Contacto contacto) {
+        this.contacto = contacto;
     }
     
 }
