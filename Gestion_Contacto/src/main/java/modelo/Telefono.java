@@ -11,4 +11,10 @@ package modelo;
 class Telefono {
     private String nombreT;
     private String numeroTelefono;
+
+    public Telefono(String nombreT, String numeroTelefono) {
+        this.nombreT = nombreT;
+        this.numeroTelefono = numeroTelefono;
+    }
+    
 }
