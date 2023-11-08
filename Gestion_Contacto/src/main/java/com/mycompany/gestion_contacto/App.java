@@ -21,9 +21,10 @@ public class App extends Application {
 
        
 
-        scene = new Scene(loadFXML("inicio"));//loadFXML("pantalla_contacto"), 640, 480);
+        scene = new Scene(loadFXML("primary"),640,480);//loadFXML("pantalla_contacto"), 640, 480);
         stage.setScene(scene);
         stage.show();
+        
     }
 
     static void setRoot(String fxml) throws IOException {

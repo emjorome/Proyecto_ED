@@ -15,8 +15,7 @@ public class Email implements Serializable{
     private String duenoEmail;
 
     public Email(String nombreEmail, String duenoEmail) {
-        this.nombreEmail = nombreEmail;
-        this.duenoEmail = duenoEmail;
+       
     }
 
     

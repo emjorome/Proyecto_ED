@@ -10,7 +10,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import modelo.Contacto;
 
 /**
@@ -21,10 +24,15 @@ import modelo.Contacto;
 public class Pantalla_ContactoController implements Initializable {
 
     Contacto contacto;
+    @FXML
+    private ImageView fotoperfil1;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // cargarContactoPrincipal();
+
+       // cargarContactoPrincipal();
+        
+
     }
 
     public void cargarContactoPrincipal(){

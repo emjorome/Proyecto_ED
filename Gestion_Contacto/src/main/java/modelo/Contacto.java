@@ -39,7 +39,10 @@ public class Contacto implements Serializable{
         this.listaemails = listaemails;
         this.contactosRelacionados = contactosRelacionados;
         this.tipoContac = tipoContac;
+        this.favorito = favorito;
     }
+    
+    
 
     public Contacto(String nombre, String apellido, Direccion ubicacion) {
         this.nombre = nombre;

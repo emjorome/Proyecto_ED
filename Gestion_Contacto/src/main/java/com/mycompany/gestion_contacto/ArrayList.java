@@ -27,7 +27,7 @@ public class ArrayList<E> implements List<E> {
     public boolean addFirst(E element) {
         if (element == null) {
             return false;
-        } else if (isEmpty()) {
+        } else if (this.isEmpty()) {
             elements[effectiveSize++] = element;
             return true;
         } else if (CAPACITY == effectiveSize) {

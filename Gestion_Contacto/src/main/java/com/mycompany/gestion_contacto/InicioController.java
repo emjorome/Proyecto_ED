@@ -11,13 +11,18 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import modelo.Telefono;
 import modelo.Contacto;
+import modelo.*;
+import java.util.*;
+import javafx.scene.image.Image;
 import modelo.Usuario;
 import modelo.*;
 
@@ -37,14 +42,45 @@ public class InicioController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        creandoUsuario();
+        //creandoUsuario();
         lstUsuarios = new ArrayList<>();
-        //cargarUsuarios();
+
+        // cargarUsuarios();
+        
+        Telefono t1 = new Telefono("personal","096-905-4199");
+        Telefono t2 = new Telefono("casa", "285-6499");
+        ArrayList<Telefono> tl = new ArrayList<Telefono>();
+        tl.add(t1);
+        tl.add(t2);
+        
+        Direccion d1 = new Direccion("Casa", "NoDoxeo", "Guayaquil", "Ecuador");
+       
+        Fecha f1 = new Fecha("Cumpleaños", new Date(2003, 2, 8));
+        Fecha f2 = new Fecha("Graduacion", new Date(2020, 3, 6));
+        ArrayList<Fecha> fe = new ArrayList<Fecha>();
+        fe.add(f1);
+        fe.add(f2);
+        /*
+        Image im1 = new Image("src\\main\\java\\perfil_Image\\Piero.png");
+        
+        Foto fo1 = new Foto(im1, "Foto perfil", "perfil");
+        ArrayList<Foto> fo = new ArrayList<Foto>();
+        fo.add(fo1);
+        */
+        Email em1 = new Email("pazminopiero@gmail.com", "personal");
+        ArrayList<Email> em = new ArrayList<Email>();
+        em.add(em1);
+        
+        ArrayList<Contacto> crP = new ArrayList<Contacto>();
+        
+       // Contacto c1 = new Contacto("Piero", "Pazmino", tl, d1, fe, fo, em, crP, TipoContacto.PERSONA, true);
+            
+
     }
-    
+    /*
     public void creandoUsuario(){
-        Contacto c1 = new Contacto("Fernando","Garcia",new Direccion("Sauces","Guayaquil","Guayaquil","Ecuador"));
-        Usuario usuario = new Usuario("fergar","123",c1);
+       Contacto c1 = new Contacto("Fernando","Garcia",new Direccion("Sauces","Guayaquil","Guayaquil","Ecuador"));
+       Usuario usuario = new Usuario("fergar","123",c1);
         ArrayList<Usuario> Usuarios = new ArrayList<>();
         Usuarios.add(usuario);
         try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/usuarios.text"))){
@@ -57,6 +93,7 @@ public class InicioController implements Initializable {
             io.printStackTrace();
         }
     }
+*/
 
     public void cargarUsuarios(){
         try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/usuarios.text"))){
