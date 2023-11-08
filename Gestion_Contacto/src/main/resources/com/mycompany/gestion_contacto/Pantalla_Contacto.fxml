@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gestion_contacto.Pantalla_ContactoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gestion_contacto.Pantalla_ContactoController">
    <left>
       <VBox prefHeight="650.0" prefWidth="210.0" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER" prefHeight="225.0" prefWidth="210.0" styleClass="roundedvbox" stylesheets="@../../../styles/pantalla_contacto.css">
                <children>
-                  <ImageView fitHeight="128.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="fotoperfil1" fitHeight="128.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../java/perfil_Image/perfil1.png" />
                      </image>
@@ -84,4 +84,4 @@
          </children>
       </VBox>
    </left>
-</fx:root>
+</BorderPane>

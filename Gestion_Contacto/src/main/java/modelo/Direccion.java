@@ -8,7 +8,7 @@ package modelo;
  *
  * @author Danny
  */
-class Direccion {
+public class Direccion {
     private String nombreDireccion;
     private String ubicacion;
     private String ciudad;

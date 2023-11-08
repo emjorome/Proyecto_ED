@@ -23,13 +23,20 @@ public class Contacto {
     private ArrayList<Contacto> contactosRelacionados;
     private TipoContacto tipoContac;
     private boolean favorito;
-    
 
-    public Contacto(String nombre) {
+    public Contacto(String nombre, String apellido, ArrayList<Telefono> listTelefonos, Direccion ubicacion, ArrayList<Fecha> listafechas, ArrayList<Foto> listaFotos, ArrayList<Email> listaemails, ArrayList<Contacto> contactosRelacionados, TipoContacto tipoContac, boolean favorito) {
         this.nombre = nombre;
-     
+        this.apellido = apellido;
+        this.listTelefonos = listTelefonos;
+        this.ubicacion = ubicacion;
+        this.listafechas = listafechas;
+        this.listaFotos = listaFotos;
+        this.listaemails = listaemails;
+        this.contactosRelacionados = contactosRelacionados;
+        this.tipoContac = tipoContac;
+        this.favorito = favorito;
     }
-
+    
     public String getNombre() {
         return nombre;
     }

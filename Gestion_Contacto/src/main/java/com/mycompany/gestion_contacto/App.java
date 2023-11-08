@@ -18,10 +18,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-         mainStage = stage;
+        mainStage = stage;
         scene = new Scene(loadFXML("primary"), 640, 480);
         stage.setScene(scene);
         stage.show();
+        
     }
 
     static void setRoot(String fxml) throws IOException {

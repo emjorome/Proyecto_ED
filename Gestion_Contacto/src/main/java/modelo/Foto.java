@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
  *
  * @author Danny
  */
-class Foto {
+public class Foto {
     private Image imagen;
     private String nombreFoto;
     private String descripcion;

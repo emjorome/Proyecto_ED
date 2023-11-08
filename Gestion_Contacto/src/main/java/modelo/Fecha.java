@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author Danny
  */
-class Fecha {
+public class Fecha {
     private String nomFecha;
     private Date fecha;
 

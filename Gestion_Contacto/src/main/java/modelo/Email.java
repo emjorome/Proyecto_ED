@@ -8,13 +8,13 @@ package modelo;
  *
  * @author Danny
  */
-class Email {
-    private String nombreEmail;
-    private String duenoEmail;
+public class Email {
+    private String Email;
+    private String tipoEmail;
 
     public Email(String nombreEmail, String duenoEmail) {
-        this.nombreEmail = nombreEmail;
-        this.duenoEmail = duenoEmail;
+        this.Email = nombreEmail;
+        this.tipoEmail = duenoEmail;
     }
 
     
