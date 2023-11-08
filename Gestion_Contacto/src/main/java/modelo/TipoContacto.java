@@ -4,10 +4,12 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Danny
  */
-public enum TipoContacto {
+public enum TipoContacto implements Serializable{
     PERSONA,EMPRESA;
 }

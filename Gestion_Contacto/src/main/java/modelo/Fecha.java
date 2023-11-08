@@ -4,13 +4,14 @@
  */
 package modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Danny
  */
-class Fecha {
+public class Fecha implements Serializable{
     private String nomFecha;
     private Date fecha;
 

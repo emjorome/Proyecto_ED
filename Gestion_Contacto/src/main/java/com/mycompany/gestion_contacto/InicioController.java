@@ -17,7 +17,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import modelo.Telefono;
+import modelo.Contacto;
 import modelo.Usuario;
+import modelo.*;
 
 /**
  * FXML Controller class
@@ -35,8 +37,25 @@ public class InicioController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        creandoUsuario();
         lstUsuarios = new ArrayList<>();
         //cargarUsuarios();
+    }
+    
+    public void creandoUsuario(){
+        Contacto c1 = new Contacto("Fernando","Garcia",new Direccion("Sauces","Guayaquil","Guayaquil","Ecuador"));
+        Usuario usuario = new Usuario("fergar","123",c1);
+        ArrayList<Usuario> Usuarios = new ArrayList<>();
+        Usuarios.add(usuario);
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/usuarios.text"))){
+            out.writeObject(Usuarios);
+            out.flush();
+        }
+        catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
     }
 
     public void cargarUsuarios(){

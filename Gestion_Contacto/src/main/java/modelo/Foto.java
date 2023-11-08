@@ -4,13 +4,14 @@
  */
 package modelo;
 
+import java.io.Serializable;
 import javafx.scene.image.Image;
 
 /**
  *
  * @author Danny
  */
-class Foto {
+public class Foto implements Serializable{
     private Image imagen;
     private String nombreFoto;
     private String descripcion;
