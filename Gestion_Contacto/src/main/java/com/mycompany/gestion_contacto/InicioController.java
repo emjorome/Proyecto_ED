@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import modelo.Telefono;
 import modelo.Usuario;
 
 /**
@@ -35,7 +36,7 @@ public class InicioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lstUsuarios = new ArrayList<>();
-        cargarUsuarios();
+        //cargarUsuarios();
     }
 
     public void cargarUsuarios(){
@@ -51,6 +52,7 @@ public class InicioController implements Initializable {
     }
     
     public void buscarUsuario(){
+
         for(Usuario u: lstUsuarios) {
             if(u.getUsuario().compareTo(nomUsuario.getText()) == 0 && 
                     u.getContraseña().compareTo(contrasena.getText()) == 0){

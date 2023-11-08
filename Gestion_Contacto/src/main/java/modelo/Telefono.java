@@ -8,7 +8,7 @@ package modelo;
  *
  * @author Danny
  */
-class Telefono {
+public class Telefono {
     private String nombreT;
     private String numeroTelefono;
 

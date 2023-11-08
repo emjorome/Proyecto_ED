@@ -24,7 +24,7 @@ public class Pantalla_ContactoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cargarContactoPrincipal();
+        // cargarContactoPrincipal();
     }
 
     public void cargarContactoPrincipal(){

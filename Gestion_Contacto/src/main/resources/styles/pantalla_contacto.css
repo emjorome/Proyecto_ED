@@ -3,7 +3,6 @@
     -fx-background-color: #EBC95E; /* Color de fondo, si es necesario */
     -fx-background-radius: 0 0 50 50; /* Radio de las esquinas */
     /* -fx-border-radius: 10; */
-   
 }
 
 .button {
@@ -11,4 +10,8 @@
     -fx-background-radius: 50; /* Radio de las esquinas */
     /* -fx-border-radius: 10; */
     
+}
+
+.white-background {
+    -fx-background-color: #fff;
 }
