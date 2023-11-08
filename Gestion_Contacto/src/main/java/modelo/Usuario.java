@@ -4,11 +4,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author USUARIO
  */
-public class Usuario {
+public class Usuario implements Serializable{
     private String usuario;
     private String contraseña;
     private Contacto contacto;

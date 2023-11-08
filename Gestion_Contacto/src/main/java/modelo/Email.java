@@ -4,13 +4,15 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Danny
  */
-public class Email {
-    private String Email;
-    private String tipoEmail;
+public class Email implements Serializable{
+    private String nombreEmail;
+    private String duenoEmail;
 
     public Email(String nombreEmail, String duenoEmail) {
         this.Email = nombreEmail;

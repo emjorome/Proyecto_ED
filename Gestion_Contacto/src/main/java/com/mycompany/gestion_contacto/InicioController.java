@@ -22,6 +22,9 @@ import modelo.Contacto;
 import modelo.*;
 import java.util.*;
 import javafx.scene.image.Image;
+import modelo.Usuario;
+import modelo.*;
+
 /**
  * FXML Controller class
  *
@@ -38,6 +41,7 @@ public class InicioController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        creandoUsuario();
         lstUsuarios = new ArrayList<>();
         cargarUsuarios();
         
@@ -69,6 +73,22 @@ public class InicioController implements Initializable {
         
         Contacto c1 = new Contacto("Piero", "Pazmino", tl, d1, fe, fo, em, crP, TipoContacto.PERSONA, true);
             
+    }
+    
+    public void creandoUsuario(){
+        Contacto c1 = new Contacto("Fernando","Garcia",new Direccion("Sauces","Guayaquil","Guayaquil","Ecuador"));
+        Usuario usuario = new Usuario("fergar","123",c1);
+        ArrayList<Usuario> Usuarios = new ArrayList<>();
+        Usuarios.add(usuario);
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/usuarios.text"))){
+            out.writeObject(Usuarios);
+            out.flush();
+        }
+        catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
     }
 
 
