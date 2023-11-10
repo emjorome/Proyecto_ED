@@ -238,7 +238,7 @@ public class DoublyLinkedList<E> {
             @Override
             public boolean hasNext() {
                 return cursor != null;
-            }
+}
 
             @Override
             public E next() {

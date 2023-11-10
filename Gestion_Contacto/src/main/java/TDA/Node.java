@@ -7,7 +7,9 @@ package TDA;
 /**
  *
  * @author pi_pa
+ * @param <E>
  */
+
 public class Node<E> {
     private E content;
     private Node<E> next;
