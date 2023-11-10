@@ -92,7 +92,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="690.0" styleClass="white-background" stylesheets="@../../../styles/pantalla_contacto.css">
                <children>
-                  <Label text="Maria Panchana">
+                  <Label text="Most Contact">
                      <font>
                         <Font name="Corbel Bold" size="18.0" />
                      </font>
@@ -132,24 +132,24 @@
                   </Button>
                </children>
             </HBox>
-            <HBox prefHeight="112.0" prefWidth="685.0" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="112.0" prefWidth="685.0" spacing="20.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="112.0" prefWidth="142.0" style="-fx-background-color: #54D39D;" styleClass="most-contacted-layout" stylesheets="@../../../styles/pantalla_contacto.css" text="Kalifa" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="142.0" style="-fx-background-color: #54D39D;" styleClass="most-contacted-layout" stylesheets="@../../../styles/pantalla_contacto.css" text="Kalifa" textFill="WHITE">
                      <font>
                         <Font name="Corbel" size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="112.0" prefWidth="142.0" style="-fx-background-color: #d1b982;" styleClass="most-contacted-layout" stylesheets="@../../../styles/pantalla_contacto.css" text="Trabajo" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="142.0" style="-fx-background-color: #d1b982;" styleClass="most-contacted-layout" stylesheets="@../../../styles/pantalla_contacto.css" text="Trabajo" textFill="WHITE">
                      <font>
                         <Font name="Corbel" size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="112.0" prefWidth="142.0" style="-fx-background-color: #F98C5B;" styleClass="most-contacted-layout" stylesheets="@../../../styles/pantalla_contacto.css" text="Familia" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="142.0" style="-fx-background-color: #F98C5B;" styleClass="most-contacted-layout" stylesheets="@../../../styles/pantalla_contacto.css" text="Familia" textFill="WHITE">
                      <font>
                         <Font name="Corbel" size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="112.0" prefWidth="142.0" style="-fx-background-color: #F0D8FD;" styleClass="most-contacted-layout" stylesheets="@../../../styles/pantalla_contacto.css" text="Amigos" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="142.0" style="-fx-background-color: #F0D8FD;" styleClass="most-contacted-layout" stylesheets="@../../../styles/pantalla_contacto.css" text="Amigos" textFill="WHITE">
                      <font>
                         <Font name="Corbel" size="24.0" />
                      </font>
@@ -159,6 +159,14 @@
                   <Insets left="15.0" />
                </VBox.margin>
             </HBox>
+            <Label prefHeight="75.0" prefWidth="92.0" text="Contacts">
+               <font>
+                  <Font name="Corbel Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </VBox.margin>
+            </Label>
          </children>
          <BorderPane.margin>
             <Insets left="5.0" />
