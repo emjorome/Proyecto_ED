@@ -4,6 +4,8 @@
  */
 package com.mycompany.gestion_contacto;
 
+import TDA.List;
+import TDA.ArrayList;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
