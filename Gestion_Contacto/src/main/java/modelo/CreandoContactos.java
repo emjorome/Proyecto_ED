@@ -32,12 +32,13 @@ public class CreandoContactos implements Serializable{
         fechas_0.add(new Fecha("Cumpleaños", new Date(1998, 3, 12)));
         fechas_0.add(new Fecha("Graduacion", new Date(2016, 5, 8)));
         ArrayList<Foto> fotos_0 = new ArrayList<>();
-        try {
+        fotos_0.add(new Foto("src\\main\\java\\perfil_Image\\Jennifer.jpg", "Foto perfil", "Perfil"));
+        /*try {
             Image im0 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Jennifer.jpg"));
             fotos_0.add(new Foto(im0, "Foto perfil", "Perfil"));
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-        }
+        }*/
         ArrayList<Email> emails_0 = new ArrayList<>();
         emails_0.add(new Email("jennifer4411@gmail.com", "Personal"));
         emails_0.add(new Email("jennifervaldez@empresa.com", "Trabajo"));
@@ -60,12 +61,13 @@ public class CreandoContactos implements Serializable{
         fechas_1.add(new Fecha("Cumpleaños", new Date(2003, 2, 8)));
         fechas_1.add(new Fecha("Graduacion", new Date(2020, 3, 6)));
         ArrayList<Foto> fotos_1 = new ArrayList<>();
-        try {
+        fotos_1.add(new Foto("src\\main\\java\\perfil_Image\\Piero.png", "Foto perfil", "Perfil"));
+        /*try {
             Image im1 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Piero.png"));
             fotos_1.add(new Foto(im1, "Foto perfil", "Perfil"));
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-        }
+        }*/
         ArrayList<Email> emails_1 = new ArrayList<>();
         emails_1.add(new Email("pazminopiero@gmail.com", "Personal"));
         ArrayList<Contacto> crP_1 = new ArrayList<>();
@@ -87,12 +89,13 @@ public class CreandoContactos implements Serializable{
         fechas_2.add(new Fecha("Cumpleaños",new Date(1996,4,7)));
         fechas_2.add(new Fecha("Aniversario",new Date(2020,4,7)));
         ArrayList<Foto> fotos_2 = new ArrayList<>();
-        try {
+        fotos_2.add(new Foto("src\\main\\java\\perfil_Image\\Martha.jpg", "Foto perfil", "Perfil"));
+        /*try {
             Image im2 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Martha.jpg"));
             fotos_2.add(new Foto(im2, "Foto perfil", "Perfil"));
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-        }
+        }*/
         ArrayList<Email> emails_2 = new ArrayList<>();
         emails_2.add(new Email("marthitaoliva@gmail.com","Personal"));
         ArrayList<Contacto> crP_2 = new ArrayList<>();
@@ -114,12 +117,13 @@ public class CreandoContactos implements Serializable{
         fechas_3.add(new Fecha("Cumpleaños",new Date(1995,3,12)));
         fechas_3.add(new Fecha("Cumpleaños_Hijo",new Date(2022,2,10)));
         ArrayList<Foto> fotos_3 = new ArrayList<>();
-        try {
+        fotos_3.add(new Foto("src\\main\\java\\perfil_Image\\Jason.jpg", "Foto perfil", "Perfil"));
+        /*try {
             Image im3 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Jason.jpg"));
             fotos_3.add(new Foto(im3, "Foto perfil", "Perfil"));
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-        }
+        }*/
         ArrayList<Email> emails_3 = new ArrayList<>();
         emails_3.add(new Email("jason34rt@gmail.com","Personal"));
         ArrayList<Contacto> crP_3 = new ArrayList<>();
@@ -141,12 +145,13 @@ public class CreandoContactos implements Serializable{
         fechas_4.add(new Fecha("Cumpleaños",new Date(1974,10,11)));
         fechas_4.add(new Fecha("Fundacion Empresa",new Date(2002,6,8)));
         ArrayList<Foto> fotos_4 = new ArrayList<>();
-        try {
+        fotos_4.add(new Foto("src\\main\\java\\perfil_Image\\Jeremy.jpg", "Foto perfil", "Perfil"));
+        /*try {
             Image im4 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Jeremy.jpg"));
             fotos_4.add(new Foto(im4, "Foto perfil", "Perfil"));
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-        }
+        }*/
         ArrayList<Email> emails_4 = new ArrayList<>();
         emails_4.add(new Email("jeremyjefe@empresa.com","Trabajo"));
         emails_4.add(new Email("jeremyAl@gmail.com","Personal"));
@@ -169,12 +174,13 @@ public class CreandoContactos implements Serializable{
         fechas_5.add(new Fecha("Cumpleaños",new Date(1986,2,5)));
         fechas_5.add(new Fecha("Aniversario",new Date(2014,4,7)));
         ArrayList<Foto> fotos_5 = new ArrayList<>();
-        try {
+        fotos_5.add(new Foto("src\\main\\java\\perfil_Image\\Claudio.png", "Foto perfil", "Perfil"));
+        /*try {
             Image im5 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Claudio.png"));
             fotos_5.add(new Foto(im5, "Foto perfil", "Perfil"));
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-        }
+        }*/
         ArrayList<Email> emails_5 = new ArrayList<>();
         emails_5.add(new Email("claudiochef@hotmail.com","Trabajo"));
         emails_5.add(new Email("claudio543@gmail.com","Personal"));

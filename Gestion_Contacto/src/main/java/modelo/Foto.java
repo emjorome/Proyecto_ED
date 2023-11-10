@@ -12,12 +12,14 @@ import javafx.scene.image.Image;
  * @author Danny
  */
 public class Foto implements Serializable{
-    private Image imagen;
+    //private Image imagen;
+    private String direccionImagen;
     private String nombreFoto;
     private String descripcion;
 
-    public Foto(Image imagen, String nombreFoto, String descripcion) {
-        this.imagen = imagen;
+    public Foto(String direccionImagen, String nombreFoto, String descripcion) {
+        //this.imagen = imagen;
+        this.direccionImagen = direccionImagen;
         this.nombreFoto = nombreFoto;
         this.descripcion = descripcion;
     }
