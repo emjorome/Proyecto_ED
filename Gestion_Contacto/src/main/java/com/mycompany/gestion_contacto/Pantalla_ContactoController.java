@@ -76,7 +76,7 @@ public class Pantalla_ContactoController implements Initializable {
     
     public List<Conta_Prueba> listaconta(){
         
-        ArrayList<Conta_Prueba> listContacto = new ArrayList<>();
+        LinkedList<Conta_Prueba> listContacto = new LinkedList<>();
          Conta_Prueba c1= new Conta_Prueba("Emilio", "85749644", "Cuenca, Ecuador");
           Conta_Prueba c2= new Conta_Prueba("Piero", "+6598 1451442", "Milagro, Ecuador");
           Conta_Prueba c3= new Conta_Prueba("Steben", "+6598 1451442", "Ecuador, Duran");

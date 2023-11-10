@@ -5,7 +5,7 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Date;
 import javafx.scene.image.Image;
 
@@ -16,19 +16,19 @@ import javafx.scene.image.Image;
 public class Contacto implements Serializable{
     private String nombre;
     private String apellido;
-    private ArrayList<Telefono> listTelefonos;
+    private LinkedList<Telefono> listTelefonos;
     private Direccion ubicacion;
-    private ArrayList<Fecha> listafechas;
-    private ArrayList<Foto> listaFotos;
-    private ArrayList<Email> listaemails;
-    private ArrayList<Contacto> contactosRelacionados;
+    private LinkedList<Fecha> listafechas;
+    private LinkedList<Foto> listaFotos;
+    private LinkedList<Email> listaemails;
+    private LinkedList<Contacto> contactosRelacionados;
     private TipoContacto tipoContac;
     private boolean favorito;
 
     public Contacto(String nombre, String apellido, 
-            ArrayList<Telefono> listTelefonos, Direccion ubicacion, 
-            ArrayList<Fecha> listafechas, ArrayList<Foto> listaFotos, 
-            ArrayList<Email> listaemails, ArrayList<Contacto> contactosRelacionados, 
+            LinkedList<Telefono> listTelefonos, Direccion ubicacion, 
+            LinkedList<Fecha> listafechas, LinkedList<Foto> listaFotos, 
+            LinkedList<Email> listaemails, LinkedList<Contacto> contactosRelacionados, 
             TipoContacto tipoContac) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -68,11 +68,11 @@ public class Contacto implements Serializable{
         this.apellido = apellido;
     }
 
-    public ArrayList<Telefono> getListTelefonos() {
+    public LinkedList<Telefono> getListTelefonos() {
         return listTelefonos;
     }
 
-    public void setListTelefonos(ArrayList<Telefono> listTelefonos) {
+    public void setListTelefonos(LinkedList<Telefono> listTelefonos) {
         this.listTelefonos = listTelefonos;
     }
 
@@ -84,27 +84,27 @@ public class Contacto implements Serializable{
         this.ubicacion = ubicacion;
     }
 
-    public ArrayList<Fecha> getListafechas() {
+    public LinkedList<Fecha> getListafechas() {
         return listafechas;
     }
 
-    public void setListafechas(ArrayList<Fecha> listafechas) {
+    public void setListafechas(LinkedList<Fecha> listafechas) {
         this.listafechas = listafechas;
     }
 
-    public ArrayList<Foto> getListaFotos() {
+    public LinkedList<Foto> getListaFotos() {
         return listaFotos;
     }
 
-    public void setListaFotos(ArrayList<Foto> listaFotos) {
+    public void setListaFotos(LinkedList<Foto> listaFotos) {
         this.listaFotos = listaFotos;
     }
 
-    public ArrayList<Email> getListaemails() {
+    public LinkedList<Email> getListaemails() {
         return listaemails;
     }
 
-    public void setListaemails(ArrayList<Email> listaemails) {
+    public void setListaemails(LinkedList<Email> listaemails) {
         this.listaemails = listaemails;
     }
 
@@ -124,11 +124,11 @@ public class Contacto implements Serializable{
         this.favorito = favorito;
     }
     
-    public ArrayList<Contacto> getContactosRelacionados() {
+    public LinkedList<Contacto> getContactosRelacionados() {
         return contactosRelacionados;
     }
 
-    public void setContactosRelacionados(ArrayList<Contacto> contactosRelacionados) {
+    public void setContactosRelacionados(LinkedList<Contacto> contactosRelacionados) {
         this.contactosRelacionados = contactosRelacionados;
     }
     

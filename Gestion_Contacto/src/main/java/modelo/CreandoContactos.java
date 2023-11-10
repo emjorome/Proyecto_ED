@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Date;
 import javafx.scene.image.Image;
 
@@ -21,17 +21,17 @@ import javafx.scene.image.Image;
 public class CreandoContactos implements Serializable{
     public void crearContactos(){
         //creandoUsuario();
-        ArrayList<Usuario> lstUsuarios = new ArrayList<>();
+        LinkedList<Usuario> lstUsuarios = new LinkedList<>();
 
         //Persona Usuario 
-        ArrayList<Telefono> tel_0 = new ArrayList<>();
+        LinkedList<Telefono> tel_0 = new LinkedList<>();
         tel_0.add(new Telefono("Personal","098-676-5837"));
         tel_0.add(new Telefono("Trabajo", "098-354-1418"));
         Direccion dic_0 = new Direccion("Casa", "Villa Club", "Daule", "Ecuador");
-        ArrayList<Fecha> fechas_0 = new ArrayList<>();
+        LinkedList<Fecha> fechas_0 = new LinkedList<>();
         fechas_0.add(new Fecha("Cumpleaños", new Date(1998, 3, 12)));
         fechas_0.add(new Fecha("Graduacion", new Date(2016, 5, 8)));
-        ArrayList<Foto> fotos_0 = new ArrayList<>();
+        LinkedList<Foto> fotos_0 = new LinkedList<>();
         fotos_0.add(new Foto("src\\main\\java\\perfil_Image\\Jennifer.jpg", "Foto perfil", "Perfil"));
         /*try {
             Image im0 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Jennifer.jpg"));
@@ -39,10 +39,10 @@ public class CreandoContactos implements Serializable{
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }*/
-        ArrayList<Email> emails_0 = new ArrayList<>();
+        LinkedList<Email> emails_0 = new LinkedList<>();
         emails_0.add(new Email("jennifer4411@gmail.com", "Personal"));
         emails_0.add(new Email("jennifervaldez@empresa.com", "Trabajo"));
-        ArrayList<Contacto> crP_0 = new ArrayList<>();
+        LinkedList<Contacto> crP_0 = new LinkedList<>();
         
         Contacto cJennifer = new Contacto("Jennifer","Valdez",dic_0);
         cJennifer.setListafechas(fechas_0);
@@ -53,14 +53,14 @@ public class CreandoContactos implements Serializable{
         cJennifer.setFavorito(false);
         
         //Persona 1 - Piero
-        ArrayList<Telefono> tel_1 = new ArrayList<>();
+        LinkedList<Telefono> tel_1 = new LinkedList<>();
         tel_1.add(new Telefono("Personal","096-905-4199"));
         tel_1.add(new Telefono("Casa", "285-6499"));
         Direccion dic_1 = new Direccion("Casa", "Garzota", "Guayaquil", "Ecuador");
-        ArrayList<Fecha> fechas_1 = new ArrayList<>();
+        LinkedList<Fecha> fechas_1 = new LinkedList<>();
         fechas_1.add(new Fecha("Cumpleaños", new Date(2003, 2, 8)));
         fechas_1.add(new Fecha("Graduacion", new Date(2020, 3, 6)));
-        ArrayList<Foto> fotos_1 = new ArrayList<>();
+        LinkedList<Foto> fotos_1 = new LinkedList<>();
         fotos_1.add(new Foto("src\\main\\java\\perfil_Image\\Piero.png", "Foto perfil", "Perfil"));
         /*try {
             Image im1 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Piero.png"));
@@ -68,9 +68,9 @@ public class CreandoContactos implements Serializable{
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }*/
-        ArrayList<Email> emails_1 = new ArrayList<>();
+        LinkedList<Email> emails_1 = new LinkedList<>();
         emails_1.add(new Email("pazminopiero@gmail.com", "Personal"));
-        ArrayList<Contacto> crP_1 = new ArrayList<>();
+        LinkedList<Contacto> crP_1 = new LinkedList<>();
         
         Contacto cPiero = new Contacto("Piero","Pazmino",dic_1);
         cPiero.setListafechas(fechas_1);
@@ -81,14 +81,14 @@ public class CreandoContactos implements Serializable{
         cPiero.setFavorito(false);
         
         //Persona 2 - Martha
-        ArrayList<Telefono> tel_2 = new ArrayList<>();
+        LinkedList<Telefono> tel_2 = new LinkedList<>();
         tel_2.add(new Telefono("Personal","099-005-8888"));
         tel_2.add(new Telefono("Casa","391-4523"));
         Direccion dic_2 = new Direccion("Casa Sauces","Sauces 8","Guayaquil","Ecuador");
-        ArrayList<Fecha> fechas_2 = new ArrayList<>();
+        LinkedList<Fecha> fechas_2 = new LinkedList<>();
         fechas_2.add(new Fecha("Cumpleaños",new Date(1996,4,7)));
         fechas_2.add(new Fecha("Aniversario",new Date(2020,4,7)));
-        ArrayList<Foto> fotos_2 = new ArrayList<>();
+        LinkedList<Foto> fotos_2 = new LinkedList<>();
         fotos_2.add(new Foto("src\\main\\java\\perfil_Image\\Martha.jpg", "Foto perfil", "Perfil"));
         /*try {
             Image im2 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Martha.jpg"));
@@ -96,9 +96,9 @@ public class CreandoContactos implements Serializable{
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }*/
-        ArrayList<Email> emails_2 = new ArrayList<>();
+        LinkedList<Email> emails_2 = new LinkedList<>();
         emails_2.add(new Email("marthitaoliva@gmail.com","Personal"));
-        ArrayList<Contacto> crP_2 = new ArrayList<>();
+        LinkedList<Contacto> crP_2 = new LinkedList<>();
         
         Contacto cMartha = new Contacto("Martha","Reyes",dic_2);
         cMartha.setListafechas(fechas_2);
@@ -109,14 +109,14 @@ public class CreandoContactos implements Serializable{
         cMartha.setFavorito(false);
         
         //Persona 3 - Jason
-        ArrayList<Telefono> tel_3 = new ArrayList<>();
+        LinkedList<Telefono> tel_3 = new LinkedList<>();
         tel_3.add(new Telefono("Personal","097-095-2848"));
         tel_3.add(new Telefono("Casa","487-0912"));
         Direccion dic_3 = new Direccion("Casa Milagro","Milagro","Milagro","Ecuador");
-        ArrayList<Fecha> fechas_3 = new ArrayList<>();
+        LinkedList<Fecha> fechas_3 = new LinkedList<>();
         fechas_3.add(new Fecha("Cumpleaños",new Date(1995,3,12)));
         fechas_3.add(new Fecha("Cumpleaños_Hijo",new Date(2022,2,10)));
-        ArrayList<Foto> fotos_3 = new ArrayList<>();
+        LinkedList<Foto> fotos_3 = new LinkedList<>();
         fotos_3.add(new Foto("src\\main\\java\\perfil_Image\\Jason.jpg", "Foto perfil", "Perfil"));
         /*try {
             Image im3 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Jason.jpg"));
@@ -124,9 +124,9 @@ public class CreandoContactos implements Serializable{
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }*/
-        ArrayList<Email> emails_3 = new ArrayList<>();
+        LinkedList<Email> emails_3 = new LinkedList<>();
         emails_3.add(new Email("jason34rt@gmail.com","Personal"));
-        ArrayList<Contacto> crP_3 = new ArrayList<>();
+        LinkedList<Contacto> crP_3 = new LinkedList<>();
         
         Contacto cJason = new Contacto("Jason","Roldan",dic_3);
         cJason.setListafechas(fechas_3);
@@ -137,14 +137,14 @@ public class CreandoContactos implements Serializable{
         cJason.setFavorito(false);
         
         //Persona 4 - Jeremy
-        ArrayList<Telefono> tel_4 = new ArrayList<>();
+        LinkedList<Telefono> tel_4 = new LinkedList<>();
         tel_4.add(new Telefono("Trabajo","097-156-3489"));
         tel_4.add(new Telefono("Personal","091-312-4592"));
         Direccion dic_4 = new Direccion("Casa","Ciudad Celeste","Samborondon","Ecuador");
-        ArrayList<Fecha> fechas_4 = new ArrayList<>();
+        LinkedList<Fecha> fechas_4 = new LinkedList<>();
         fechas_4.add(new Fecha("Cumpleaños",new Date(1974,10,11)));
         fechas_4.add(new Fecha("Fundacion Empresa",new Date(2002,6,8)));
-        ArrayList<Foto> fotos_4 = new ArrayList<>();
+        LinkedList<Foto> fotos_4 = new LinkedList<>();
         fotos_4.add(new Foto("src\\main\\java\\perfil_Image\\Jeremy.jpg", "Foto perfil", "Perfil"));
         /*try {
             Image im4 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Jeremy.jpg"));
@@ -152,10 +152,10 @@ public class CreandoContactos implements Serializable{
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }*/
-        ArrayList<Email> emails_4 = new ArrayList<>();
+        LinkedList<Email> emails_4 = new LinkedList<>();
         emails_4.add(new Email("jeremyjefe@empresa.com","Trabajo"));
         emails_4.add(new Email("jeremyAl@gmail.com","Personal"));
-        ArrayList<Contacto> crP_4 = new ArrayList<>();
+        LinkedList<Contacto> crP_4 = new LinkedList<>();
         
         Contacto cJeremy = new Contacto("Jeremy","Dominguez",dic_4);
         cJeremy.setListafechas(fechas_4);
@@ -166,14 +166,14 @@ public class CreandoContactos implements Serializable{
         cJeremy.setFavorito(false);
         
         //Persona 5 - Claudio
-        ArrayList<Telefono> tel_5 = new ArrayList<>();
+        LinkedList<Telefono> tel_5 = new LinkedList<>();
         tel_5.add(new Telefono("Personal","092-312-5671"));
         tel_5.add(new Telefono("Trabajo","091-439-6230"));
         Direccion dic_5 = new Direccion("Casa","San Juan","Quito","Ecuador");
-        ArrayList<Fecha> fechas_5 = new ArrayList<>();
+        LinkedList<Fecha> fechas_5 = new LinkedList<>();
         fechas_5.add(new Fecha("Cumpleaños",new Date(1986,2,5)));
         fechas_5.add(new Fecha("Aniversario",new Date(2014,4,7)));
-        ArrayList<Foto> fotos_5 = new ArrayList<>();
+        LinkedList<Foto> fotos_5 = new LinkedList<>();
         fotos_5.add(new Foto("src\\main\\java\\perfil_Image\\Claudio.png", "Foto perfil", "Perfil"));
         /*try {
             Image im5 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Claudio.png"));
@@ -181,10 +181,10 @@ public class CreandoContactos implements Serializable{
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }*/
-        ArrayList<Email> emails_5 = new ArrayList<>();
+        LinkedList<Email> emails_5 = new LinkedList<>();
         emails_5.add(new Email("claudiochef@hotmail.com","Trabajo"));
         emails_5.add(new Email("claudio543@gmail.com","Personal"));
-        ArrayList<Contacto> crP_5 = new ArrayList<>();
+        LinkedList<Contacto> crP_5 = new LinkedList<>();
         
         Contacto cClaudio = new Contacto("Claudio","Falconi",dic_5);
         cClaudio.setListafechas(fechas_5);
@@ -234,7 +234,7 @@ public class CreandoContactos implements Serializable{
         serializarUsuarios(lstUsuarios);
     }
     
-    public void serializarUsuarios(ArrayList<Usuario> lst){
+    public void serializarUsuarios(LinkedList<Usuario> lst){
         try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/usuarios.text"))){
             out.writeObject(lst);
             out.flush();

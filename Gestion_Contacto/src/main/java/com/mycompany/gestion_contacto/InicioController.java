@@ -12,7 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,7 +28,7 @@ import java.util.*;
 public class InicioController implements Initializable,Serializable {
 
     
-    ArrayList<Usuario> lstUsuarios;
+    LinkedList<Usuario> lstUsuarios;
     @FXML
     private TextField nomUsuario;
     @FXML
@@ -37,7 +37,7 @@ public class InicioController implements Initializable,Serializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //creandoUsuario();
-        lstUsuarios = new ArrayList<>();
+        lstUsuarios = new LinkedList<>();
         CreandoContactos c = new CreandoContactos();
         c.crearContactos();
         deserializarUsuarios();
@@ -45,7 +45,7 @@ public class InicioController implements Initializable,Serializable {
 
     public void deserializarUsuarios(){
         try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/usuarios.text"))){
-            lstUsuarios = (ArrayList<Usuario>) in.readObject();
+            lstUsuarios = (LinkedList<Usuario>) in.readObject();
         }catch(FileNotFoundException f){
             f.printStackTrace();
         }catch(IOException io){
