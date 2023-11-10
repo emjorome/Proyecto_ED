@@ -22,6 +22,38 @@ public class Direccion implements Serializable{
         this.ciudad = ciudad;
         this.pais = pais;
     }
+
+    public String getNombreDireccion() {
+        return nombreDireccion;
+    }
+
+    public void setNombreDireccion(String nombreDireccion) {
+        this.nombreDireccion = nombreDireccion;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
     
     
 }

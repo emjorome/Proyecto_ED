@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author Danny
  */
-public class Telefono {
+public class Telefono implements Serializable{
     private String nombreT;
     private String numeroTelefono;
 

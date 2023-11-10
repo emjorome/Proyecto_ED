@@ -131,5 +131,10 @@ public class Contacto implements Serializable{
     public void setContactosRelacionados(ArrayList<Contacto> contactosRelacionados) {
         this.contactosRelacionados = contactosRelacionados;
     }
+    
+    @Override
+    public String toString(){
+        return "[Nombre: "+nombre+", Apellido: "+apellido+", Ciudad: "+ubicacion.getCiudad()+", Pais: "+ubicacion.getPais()+"]";
+    }
 
 }
