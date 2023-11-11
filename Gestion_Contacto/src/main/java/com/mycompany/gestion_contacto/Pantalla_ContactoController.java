@@ -39,7 +39,7 @@ public class Pantalla_ContactoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        // cargarContactoPrincipal();
        
-        try {
+       try {
             List<Conta_Prueba> conj= listaconta();
               int contador=0;
             for(Conta_Prueba c: conj){
