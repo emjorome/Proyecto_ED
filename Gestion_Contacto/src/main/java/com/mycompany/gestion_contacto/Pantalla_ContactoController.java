@@ -4,8 +4,7 @@
  */
 package com.mycompany.gestion_contacto;
 
-import TDA.List;
-import TDA.ArrayList;
+import java.util.LinkedList;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -40,7 +39,7 @@ public class Pantalla_ContactoController implements Initializable {
        // cargarContactoPrincipal();
        
         try {
-            List<Conta_Prueba> conj= listaconta();
+            LinkedList<Conta_Prueba> conj= listaconta();
               int contador=0;
             for(Conta_Prueba c: conj){
               
@@ -74,7 +73,7 @@ public class Pantalla_ContactoController implements Initializable {
         } 
     }
     
-    public List<Conta_Prueba> listaconta(){
+    public LinkedList<Conta_Prueba> listaconta(){
         
         LinkedList<Conta_Prueba> listContacto = new LinkedList<>();
          Conta_Prueba c1= new Conta_Prueba("Emilio", "85749644", "Cuenca, Ecuador");

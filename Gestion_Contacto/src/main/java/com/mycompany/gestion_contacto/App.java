@@ -1,7 +1,6 @@
 package com.mycompany.gestion_contacto;
 
-import TDA.ArrayList;
-import TDA.*;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
