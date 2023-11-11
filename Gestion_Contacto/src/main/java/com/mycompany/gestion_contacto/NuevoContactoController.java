@@ -14,6 +14,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -33,6 +34,7 @@ import modelo.Fecha;
 import modelo.Foto;
 import modelo.Telefono;
 import modelo.TipoContacto;
+import modelo.Usuario;
 
 /**
  * FXML Controller class
@@ -136,6 +138,7 @@ public class NuevoContactoController implements Initializable {
             lstContactos.add(c);
             contactoPrincipal.setContactosRelacionados(lstContactos);
             serializarContacto();
+            actualizarUsuarios();
         }
     }
     
@@ -253,6 +256,20 @@ public class NuevoContactoController implements Initializable {
         } 
     }
     
+    public LinkedList<Usuario> deserializarUsuarios(){
+        LinkedList<Usuario> lst = new LinkedList<>();
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/usuarios.text"))){
+            lst = (LinkedList<Usuario>) in.readObject();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return lst;
+    }
+    
     public void serializarContacto() {
         try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/contactoSelec.text"))){
             out.writeObject(contactoPrincipal);
@@ -262,6 +279,37 @@ public class NuevoContactoController implements Initializable {
         }catch(IOException io){
             io.printStackTrace();
         }
+    }
+    
+    public void serializarUsuarios(LinkedList<Usuario> lst){
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/usuarios.text"))){
+            out.writeObject(lst);
+            out.flush();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
+    }
+    
+    public void actualizarUsuarios(){
+        LinkedList<Usuario> lstActual = deserializarUsuarios();
+        
+        Comparator<Contacto> cmp = (c1,c2) -> {
+            int i = -1;
+            if(c1.getNombre().compareTo(c2.getNombre()) == 0 && c1.getApellido().compareTo(c2.getApellido()) == 0){
+                i = 0;
+            }
+            return i;
+        };
+        
+        for(Usuario u: lstActual){
+            if(cmp.compare(u.getContacto(), contactoPrincipal) == 0){
+                int pos = lstActual.indexOf(u);
+                lstActual.get(pos).setContacto(contactoPrincipal);
+            }
+        }
+        serializarUsuarios(lstActual);
     }
     
     public void salir(){
