@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -40,7 +39,7 @@ public class Pantalla_ContactoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        // cargarContactoPrincipal();
        
-       try {
+        try {
             LinkedList<Conta_Prueba> conj= listaconta();
               int contador=0;
             for(Conta_Prueba c: conj){

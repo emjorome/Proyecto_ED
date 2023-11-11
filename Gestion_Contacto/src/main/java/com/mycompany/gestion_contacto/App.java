@@ -1,7 +1,6 @@
 package com.mycompany.gestion_contacto;
 
-import TDA.ArrayList;
-import TDA.*;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,8 +23,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
-       
 
         scene = new Scene(loadFXML("inicio"),640,480);//loadFXML("pantalla_contacto"), 640, 480);
         stage.setScene(scene);
