@@ -134,7 +134,7 @@ public class Contacto implements Serializable{
     
     @Override
     public String toString(){
-        return "[Nombre: "+nombre+", Apellido: "+apellido+", Ciudad: "+ubicacion.getCiudad()+", Pais: "+ubicacion.getPais()+"]";
+        return nombre + " " + apellido;
     }
 
 }
