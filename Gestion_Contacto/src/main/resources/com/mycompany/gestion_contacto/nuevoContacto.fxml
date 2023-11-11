@@ -24,9 +24,9 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="32.0" prefWidth="600.0" spacing="30.0" style="-fx-background-color: lightGrey;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Guardar" />
+            <Button mnemonicParsing="false" onAction="#crearContacto" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Guardar" />
             <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Borrar" />
-            <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Cancelar" />
+            <Button mnemonicParsing="false" onAction="#salir" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Cancelar" />
          </children>
       </HBox>
    </bottom>
@@ -52,17 +52,17 @@
               </rowConstraints>
                <children>
                   <Label text="Nombre:" />
-                  <TextField maxWidth="-Infinity" GridPane.columnIndex="1" />
+                  <TextField fx:id="nombre" maxWidth="-Infinity" GridPane.columnIndex="1" />
                   <Label text="Apellido:" GridPane.rowIndex="1" />
-                  <TextField maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="apellido" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Pais:" GridPane.columnIndex="2" />
-                  <TextField maxWidth="-Infinity" GridPane.columnIndex="3" />
+                  <TextField fx:id="pais" maxWidth="-Infinity" GridPane.columnIndex="3" />
                   <Label text="Ciudad:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <TextField maxWidth="-Infinity" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <TextField fx:id="ciudad" maxWidth="-Infinity" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <Label text="Ubicacion:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <TextField maxWidth="-Infinity" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <TextField fx:id="ubicacion" maxWidth="-Infinity" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                   <Label text="NomDireccion:" GridPane.rowIndex="2" />
-                  <TextField maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="nomDireccion" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: lightGrey;" text="Datos Opcionales">
@@ -86,7 +86,7 @@
                   <HBox alignment="CENTER" prefHeight="6.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: lightGrey;">
                      <children>
                         <Label prefHeight="17.0" prefWidth="63.0" text="Teléfono" />
-                        <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
+                        <Button mnemonicParsing="false" onAction="#añadirGridTelefono" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
                      </children>
                   </HBox>
                   <GridPane fx:id="GridTelefono" prefWidth="600.0">
@@ -113,7 +113,7 @@
                   <HBox alignment="CENTER" prefHeight="6.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: lightGrey;">
                      <children>
                         <Label prefHeight="17.0" prefWidth="58.0" text="Fecha" />
-                        <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
+                        <Button mnemonicParsing="false" onAction="#añadirGridFecha" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
                      </children>
                   </HBox>
                   <GridPane fx:id="GridFecha">
@@ -139,8 +139,8 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="20.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: lightGrey;">
                      <children>
-                        <Label text="Correro Electrónico" />
-                        <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
+                        <Label text="Correo Electrónico" />
+                        <Button mnemonicParsing="false" onAction="#añadirGridCorreo" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
                      </children>
                   </HBox>
                   <GridPane fx:id="GridCorreo">
@@ -167,7 +167,7 @@
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: lightGrey;">
                      <children>
                         <Label text="Contactos Relacionados" />
-                        <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
+                        <Button mnemonicParsing="false" onAction="#añadirGridContacto" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
                      </children>
                   </HBox>
                   <HBox fx:id="hbContacto" alignment="CENTER" prefHeight="41.0" prefWidth="600.0" spacing="50.0">
@@ -183,7 +183,7 @@
                   <HBox alignment="CENTER" prefHeight="3.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: lightGrey;">
                      <children>
                         <Label text="Foto" />
-                        <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
+                        <Button mnemonicParsing="false" onAction="#añadirGridFoto" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
                      </children>
                   </HBox>
                   <GridPane fx:id="GridFoto" prefWidth="600.0">

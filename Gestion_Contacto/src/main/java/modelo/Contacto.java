@@ -49,6 +49,10 @@ public class Contacto implements Serializable{
         this.apellido = apellido;
         this.ubicacion = ubicacion;
     }
+
+    public Contacto() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 

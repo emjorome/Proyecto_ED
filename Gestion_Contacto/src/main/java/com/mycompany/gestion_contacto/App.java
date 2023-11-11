@@ -27,7 +27,7 @@ public class App extends Application {
 
        
 
-        scene = new Scene(loadFXML("nuevoContacto"),640,480);//loadFXML("pantalla_contacto"), 640, 480);
+        scene = new Scene(loadFXML("inicio"),640,480);//loadFXML("pantalla_contacto"), 640, 480);
         stage.setScene(scene);
         stage.show();
         

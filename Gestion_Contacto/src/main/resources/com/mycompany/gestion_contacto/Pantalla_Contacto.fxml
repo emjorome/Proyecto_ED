@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="650.0" maxWidth="900.0" minHeight="650.0" minWidth="900.0" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gestion_contacto.Pantalla_ContactoController">
+<BorderPane maxHeight="650.0" maxWidth="900.0" minHeight="650.0" minWidth="900.0" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gestion_contacto.Pantalla_ContactoController">
    <left>
       <VBox prefHeight="650.0" prefWidth="210.0" styleClass="white-background" stylesheets="@../../../styles/pantalla_contacto.css" BorderPane.alignment="CENTER">
          <children>
@@ -133,7 +133,7 @@
                      </HBox.margin>
                   </Label>
                   <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" stylesheets="@../../../styles/pantalla_contacto.css" text="Create Contact" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#nuevoContacto" prefHeight="26.0" prefWidth="102.0" stylesheets="@../../../styles/pantalla_contacto.css" text="Create Contact" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
