@@ -28,18 +28,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
         
-        LinkedList<Integer> arr= new LinkedList<Integer>();
-        arr.addLast(1);
-        arr.addLast(2);
-        arr.addLast(3);
-        arr.addLast(4);
-        arr.addLast(5);
-        arr.addLast(6);
-        arr.addLast(7);
-        arr.addLast(8);
-        arr.addLast(9);
-        System.out.println(arr);
-        ListIterator<Integer> it = arr.listIterator();
+
 //        while (it.hasNext()) {            
 //            Integer next = it.next();
 //            System.out.println(next);
@@ -60,9 +49,7 @@ public class App extends Application {
 //                System.out.println(prev);
 //            }
 //        }
-        System.out.println(arr);
-        Integer node = arr.get(0);
-        System.out.println(node);
+
     }
 
     static void setRoot(String fxml) throws IOException {
