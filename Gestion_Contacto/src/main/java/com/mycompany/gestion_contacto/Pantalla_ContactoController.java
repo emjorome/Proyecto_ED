@@ -24,6 +24,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modelo.Conta_Prueba;
 import modelo.Contacto;
+import modelo.CreandoContactos;
+import com.mycompany.gestion_contacto.NuevoContactoController;
 import modelo.Usuario;
 
 /**
@@ -61,10 +63,14 @@ public class Pantalla_ContactoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        // cargarContactoPrincipal();
       cargar_Imagenes();
-       lstContacto = InicioController.lstUsuarios.get(0).getContacto().getContactosRelacionados();
+      cargarContactoPrincipal();
+      
+
+       
+        
       
         try {
-            LinkedList<Conta_Prueba> conj= listaconta();
+            LinkedList<Contacto> lstContactos = contacto.getContactosRelacionados();
               int contador=0;
             for(Contacto c: lstContacto){
               
@@ -90,6 +96,7 @@ public class Pantalla_ContactoController implements Initializable {
     public void cargarContactoPrincipal(){
         try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/contactoSelec.text"))){
             contacto = (Contacto) in.readObject();
+            lstContacto = contacto.getContactosRelacionados();
         }catch(FileNotFoundException f){
             f.printStackTrace();
         }catch(IOException io){
@@ -97,6 +104,7 @@ public class Pantalla_ContactoController implements Initializable {
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         } 
+        
     }
     
     public LinkedList<Conta_Prueba> listaconta(){

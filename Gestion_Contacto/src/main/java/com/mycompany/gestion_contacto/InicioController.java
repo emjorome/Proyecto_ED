@@ -28,7 +28,7 @@ import java.util.*;
 public class InicioController implements Initializable,Serializable {
 
     
-    static LinkedList<Usuario> lstUsuarios;
+    LinkedList<Usuario> lstUsuarios;
     @FXML
     private TextField nomUsuario;
     @FXML
@@ -38,8 +38,8 @@ public class InicioController implements Initializable,Serializable {
     public void initialize(URL url, ResourceBundle rb) {
         //creandoUsuario();
         lstUsuarios = new LinkedList<>();
-        CreandoContactos c = new CreandoContactos();
-        c.crearContactos();
+        /*CreandoContactos c = new CreandoContactos();
+        c.crearContactos();*/
         deserializarUsuarios();
     }
 
@@ -61,7 +61,6 @@ public class InicioController implements Initializable,Serializable {
     public void buscarUsuario(){
         boolean Encontrado = false;
         for(Usuario u: lstUsuarios) {
-            System.out.println("hola");
             if(u.getUsuario().compareTo(nomUsuario.getText()) == 0 && 
                     u.getContraseña().compareTo(contrasena.getText()) == 0){
                 try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/contactoSelec.text"))){

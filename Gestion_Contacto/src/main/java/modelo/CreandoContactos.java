@@ -20,7 +20,7 @@ import javafx.scene.image.Image;
  * @author USUARIO
  */
 public class CreandoContactos implements Serializable{
-    public void crearContactos(){
+    public void crearContactos() throws ClassNotFoundException{
         //creandoUsuario();
         LinkedList<Usuario> lstUsuarios = new LinkedList<>();
 
@@ -199,6 +199,8 @@ public class CreandoContactos implements Serializable{
         crP_1.add(cJennifer);
         crP_1.add(cMartha);
         crP_1.add(cClaudio);
+        crP_1.add(cJason);
+        crP_1.add(cJeremy);
         cPiero.setContactosRelacionados(crP_1);
         
         //Contactos para Martha
@@ -232,7 +234,7 @@ public class CreandoContactos implements Serializable{
         //Creando Usuario para Jennifer
         Usuario uJennifer = new Usuario("jenny","123",cJennifer);
         lstUsuarios.add(uJennifer);
-        serializarUsuarios(lstUsuarios);
+
     }
     
     public void serializarUsuarios(LinkedList<Usuario> lst){
@@ -247,10 +249,10 @@ public class CreandoContactos implements Serializable{
         }
     }
     
-    public static LinkedList<Usuario> deserializarUsuarios() throws ClassNotFoundException{
-        LinkedList<Usuario> listaUsuario=null;
+    public static LinkedList<Contacto> deserializarUsuarios() throws ClassNotFoundException{
+        LinkedList<Contacto> listaUsuario=null;
         try(ObjectInputStream input = new ObjectInputStream(new FileInputStream("archivos/usuarios.text"))){
-            listaUsuario =  (LinkedList<Usuario>) input.readObject();
+            listaUsuario =  (LinkedList<Contacto>) input.readObject();
             input.close();  
         }
         catch(FileNotFoundException f){
