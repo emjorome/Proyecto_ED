@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -244,5 +245,19 @@ public class CreandoContactos implements Serializable{
         }catch(IOException io){
             io.printStackTrace();
         }
+    }
+    
+    public static LinkedList<Usuario> deserializarUsuarios() throws ClassNotFoundException{
+        LinkedList<Usuario> listaUsuario=null;
+        try(ObjectInputStream input = new ObjectInputStream(new FileInputStream("archivos/usuarios.text"))){
+            listaUsuario =  (LinkedList<Usuario>) input.readObject();
+            input.close();  
+        }
+        catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
+        return  listaUsuario;
     }
 }

@@ -10,17 +10,21 @@ import java.util.LinkedList;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modelo.Conta_Prueba;
 import modelo.Contacto;
+import modelo.Usuario;
 
 /**
  * FXML Controller class
@@ -34,21 +38,42 @@ public class Pantalla_ContactoController implements Initializable {
     private ImageView fotoperfil1;
     @FXML
     private HBox hbox_contactos;
+    @FXML
+    private Button btnBuscar;
+    @FXML
+    private Button btnMenu;
+    @FXML
+    private ImageView imgBuscar;
+    @FXML
+    private ImageView imgMenu;
+    
+    LinkedList<Contacto> lstContacto;
+    @FXML
+    private Button btnBuscar1;
+    @FXML
+    private ImageView imgPreviuos;
+    @FXML
+    private Button btnBuscar11;
+    @FXML
+    private ImageView imgNext;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        // cargarContactoPrincipal();
-       
+      cargar_Imagenes();
+       lstContacto = InicioController.lstUsuarios.get(0).getContacto().getContactosRelacionados();
+      
         try {
             LinkedList<Conta_Prueba> conj= listaconta();
               int contador=0;
-            for(Conta_Prueba c: conj){
+            for(Contacto c: lstContacto){
               
                 FXMLLoader fxmlloader= new FXMLLoader();
                 fxmlloader.setLocation(getClass().getResource("plantilla_contacto.fxml"));
                 VBox vboxcontact= fxmlloader.load();
                 Plantilla_contactoController controlador= fxmlloader.getController();
                controlador.setData(c);
+               
                hbox_contactos.getChildren().add(vboxcontact);
                contador++;
                 if (contador==4) {
@@ -94,12 +119,48 @@ public class Pantalla_ContactoController implements Initializable {
         return listContacto;
     }
     
+    @FXML
     public void nuevoContacto(){
         try {
             App.setRoot("nuevoContacto");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public void cargar_Imagenes(){
+         String s= "src\\main\\java\\perfil_Image\\busqueda_icon.png";
+          String s2= "src\\main\\java\\perfil_Image\\menu-puntos-vertical.png";
+           String ruta_imgNext= "src\\main\\java\\perfil_Image\\intercalacion-a-la-derecha.png";
+        String ruta_imgprevio= "src\\main\\java\\perfil_Image\\caret-izquierda.png";
+    
+        try {
+            FileInputStream fil = new FileInputStream(s);
+            Image i= new Image(fil);
+            imgBuscar.setImage(i);
+            // Imagen del Menu
+            FileInputStream fil2 = new FileInputStream(s2);
+            Image i2= new Image(fil2);
+            imgMenu.setImage(i2);
+            // Imagen Icono Next
+            FileInputStream fil3 = new FileInputStream(ruta_imgNext);
+            Image i3= new Image(fil3);
+            imgNext.setImage(i3);
+            // Imagen Icono Previous
+            FileInputStream fil4 = new FileInputStream(ruta_imgprevio);
+            Image i4= new Image(fil4);
+            imgPreviuos.setImage(i4);
+            
+            
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        
+      /*
+        Image imbus= new Image("\\src\\main\\java\\perfil_Image\\busqueda_icon.png");
+       imgBuscar.setImage(imbus);
+*/
+       
     }
     
 }

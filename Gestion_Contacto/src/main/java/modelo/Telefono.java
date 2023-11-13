@@ -14,6 +14,22 @@ public class Telefono implements Serializable{
     private String nombreT;
     private String numeroTelefono;
 
+    public String getNombreT() {
+        return nombreT;
+    }
+
+    public void setNombreT(String nombreT) {
+        this.nombreT = nombreT;
+    }
+
+    public String getNumeroTelefono() {
+        return numeroTelefono;
+    }
+
+    public void setNumeroTelefono(String numeroTelefono) {
+        this.numeroTelefono = numeroTelefono;
+    }
+
     public Telefono(String nombreT, String numeroTelefono) {
         this.nombreT = nombreT;
         this.numeroTelefono = numeroTelefono;

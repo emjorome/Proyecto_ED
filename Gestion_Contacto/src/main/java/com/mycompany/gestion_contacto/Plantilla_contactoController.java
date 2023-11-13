@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import modelo.Conta_Prueba;
+import modelo.Contacto;
 
 /**
  * FXML Controller class
@@ -57,9 +58,9 @@ public class Plantilla_contactoController implements Initializable {
         this.lb_ubicacion = lb_ubicacion;
     }
     
-    public void setData(Conta_Prueba c){
-        this.lb_nombre.setText(c.getNombre());
-        this.lb_telefono.setText(c.getTelefono());
-        this.lb_ubicacion.setText(c.getUbicacion());
+    public void setData(Contacto c){
+        this.lb_nombre.setText(c.getNombre()+" "+c.getApellido());
+        this.lb_telefono.setText(c.getListTelefonos().get(0).getNumeroTelefono());
+        this.lb_ubicacion.setText(c.getUbicacion().getPais()+", "+c.getUbicacion().getCiudad());
     }
 }

@@ -24,3 +24,8 @@
 .most-contacted-layout{
     -fx-background-radius: 0 35 35 35;   
 }
+
+.vbox-plantilla{
+    -fx-background-radius: 25 25 25 25;   
+     -fx-background-color: #F5F0AF;
+}
