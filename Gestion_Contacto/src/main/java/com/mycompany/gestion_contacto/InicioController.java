@@ -38,8 +38,8 @@ public class InicioController implements Initializable,Serializable {
     public void initialize(URL url, ResourceBundle rb) {
         //creandoUsuario();
         lstUsuarios = new LinkedList<>();
-        CreandoContactos c = new CreandoContactos();
-        c.crearContactos();
+        /*CreandoContactos c = new CreandoContactos();
+        c.crearContactos();*/
         deserializarUsuarios();
     }
 
