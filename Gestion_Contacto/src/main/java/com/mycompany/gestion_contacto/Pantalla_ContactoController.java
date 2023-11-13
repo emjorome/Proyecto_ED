@@ -26,6 +26,7 @@ import modelo.Conta_Prueba;
 import modelo.Contacto;
 import modelo.CreandoContactos;
 import com.mycompany.gestion_contacto.NuevoContactoController;
+import javafx.event.ActionEvent;
 import modelo.Usuario;
 
 /**
@@ -51,13 +52,13 @@ public class Pantalla_ContactoController implements Initializable {
     
     LinkedList<Contacto> lstContacto;
     @FXML
-    private Button btnBuscar1;
-    @FXML
     private ImageView imgPreviuos;
     @FXML
-    private Button btnBuscar11;
-    @FXML
     private ImageView imgNext;
+    @FXML
+    private Button btnPrevious;
+    @FXML
+    private Button btnNext;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,7 +83,7 @@ public class Pantalla_ContactoController implements Initializable {
                
                hbox_contactos.getChildren().add(vboxcontact);
                contador++;
-                if (contador==4) {
+                if (contador==1) {
                     break;
                     
                 }
@@ -171,6 +172,16 @@ public class Pantalla_ContactoController implements Initializable {
        imgBuscar.setImage(imbus);
 */
        
+    }
+
+    @FXML
+    private void contacto_anterior(ActionEvent event) {
+        
+        
+    }
+
+    @FXML
+    private void contacto_siguiente(ActionEvent event) {
     }
     
 }

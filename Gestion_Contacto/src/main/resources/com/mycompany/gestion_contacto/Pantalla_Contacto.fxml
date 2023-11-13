@@ -212,13 +212,13 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnBuscar1" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="transparent" stylesheets="@../../../styles/pantalla_contacto.css">
+                  <Button fx:id="btnPrevious" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#contacto_anterior" styleClass="transparent" stylesheets="@../../../styles/pantalla_contacto.css">
                      <graphic>
                         <ImageView fx:id="imgPreviuos" fitHeight="57.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Pane prefHeight="100.0" prefWidth="70.0" />
-                  <Button fx:id="btnBuscar11" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="transparent" stylesheets="@../../../styles/pantalla_contacto.css">
+                  <Button fx:id="btnNext" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#contacto_siguiente" styleClass="transparent" stylesheets="@../../../styles/pantalla_contacto.css">
                      <graphic>
                         <ImageView fx:id="imgNext" fitHeight="46.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
