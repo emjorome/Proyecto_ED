@@ -75,6 +75,10 @@ public class Contacto implements Serializable{
     public LinkedList<Telefono> getListTelefonos() {
         return listTelefonos;
     }
+    
+    public String getListTelefonoSimple() {
+        return listTelefonos.get(0).getNumeroTelefono();
+    }
 
     public void setListTelefonos(LinkedList<Telefono> listTelefonos) {
         this.listTelefonos = listTelefonos;

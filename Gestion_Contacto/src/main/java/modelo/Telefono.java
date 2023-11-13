@@ -34,5 +34,27 @@ public class Telefono implements Serializable{
         this.nombreT = nombreT;
         this.numeroTelefono = numeroTelefono;
     }
+
+    public String getNombreT() {
+        return nombreT;
+    }
+
+    public void setNombreT(String nombreT) {
+        this.nombreT = nombreT;
+    }
+
+    public String getNumeroTelefono() {
+        return numeroTelefono;
+    }
+
+    public void setNumeroTelefono(String numeroTelefono) {
+        this.numeroTelefono = numeroTelefono;
+    }
+
+    @Override
+    public String toString() {
+        return "" + numeroTelefono + "";
+    }
+    
     
 }

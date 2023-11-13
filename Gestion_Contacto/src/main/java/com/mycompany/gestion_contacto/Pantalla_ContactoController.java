@@ -107,24 +107,26 @@ public class Pantalla_ContactoController implements Initializable {
         
     }
     
-    public LinkedList<Conta_Prueba> listaconta(){
+    public LinkedList<Contacto> listaconta(Contacto contacto){
         
-        LinkedList<Conta_Prueba> listContacto = new LinkedList<>();
-         Conta_Prueba c1= new Conta_Prueba("Emilio", "85749644", "Cuenca, Ecuador");
-          Conta_Prueba c2= new Conta_Prueba("Piero", "+6598 1451442", "Milagro, Ecuador");
-          Conta_Prueba c3= new Conta_Prueba("Steben", "+6598 1451442", "Ecuador, Duran");
-          Conta_Prueba c4= new Conta_Prueba("Marcelo", "+593 1451442", "Ecuador, Guayaquil");
-        listContacto.addLast(c1);
-        listContacto.addLast(c2);
-        listContacto.addLast(c3);
-        listContacto.addLast(c4);
-         listContacto.addLast(c1);
-          listContacto.addLast(c1);
-        listContacto.addLast(c2);
-        listContacto.addLast(c3);
-        listContacto.addLast(c4);
-         listContacto.addLast(c1);
-        return listContacto;
+//        LinkedList<Conta_Prueba> listContacto = new LinkedList<>();
+//         Conta_Prueba c1= new Conta_Prueba("Emilio", "85749644", "Cuenca, Ecuador");
+//          Conta_Prueba c2= new Conta_Prueba("Piero", "+6598 1451442", "Milagro, Ecuador");
+//          Conta_Prueba c3= new Conta_Prueba("Steben", "+6598 1451442", "Ecuador, Duran");
+//          Conta_Prueba c4= new Conta_Prueba("Marcelo", "+593 1451442", "Ecuador, Guayaquil");
+//        listContacto.addLast(c1);
+//        listContacto.addLast(c2);
+//        listContacto.addLast(c3);
+//        listContacto.addLast(c4);
+//         listContacto.addLast(c1);
+//          listContacto.addLast(c1);
+//        listContacto.addLast(c2);
+//        listContacto.addLast(c3);
+//        listContacto.addLast(c4);
+//         listContacto.addLast(c1);
+
+        LinkedList<Contacto> contactos = contacto.getContactosRelacionados();
+        return contactos;
     }
     
     @FXML

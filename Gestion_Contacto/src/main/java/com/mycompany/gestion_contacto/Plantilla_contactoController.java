@@ -59,8 +59,8 @@ public class Plantilla_contactoController implements Initializable {
     }
     
     public void setData(Contacto c){
-        this.lb_nombre.setText(c.getNombre()+" "+c.getApellido());
-        this.lb_telefono.setText(c.getListTelefonos().get(0).getNumeroTelefono());
-        this.lb_ubicacion.setText(c.getUbicacion().getPais()+", "+c.getUbicacion().getCiudad());
+        this.lb_nombre.setText(c.getNombre());
+        this.lb_telefono.setText(c.getListTelefonoSimple());
+        this.lb_ubicacion.setText(c.getUbicacion().getNombreDireccion());
     }
 }
