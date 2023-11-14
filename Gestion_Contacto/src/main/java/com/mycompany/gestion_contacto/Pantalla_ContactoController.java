@@ -26,7 +26,9 @@ import modelo.Conta_Prueba;
 import modelo.Contacto;
 import modelo.CreandoContactos;
 import com.mycompany.gestion_contacto.NuevoContactoController;
+import java.util.ListIterator;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import modelo.Usuario;
 
 /**
@@ -59,6 +61,9 @@ public class Pantalla_ContactoController implements Initializable {
     private Button btnPrevious;
     @FXML
     private Button btnNext;
+    
+    private ListIterator<Contacto> listIterator;
+    private int currentIndex = 0;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -175,13 +180,54 @@ public class Pantalla_ContactoController implements Initializable {
     }
 
     @FXML
-    private void contacto_anterior(ActionEvent event) {
-        
+    private void contacto_anterior(ActionEvent event) throws IOException {
+    if (lstContacto.isEmpty()) {
+        // No hay elementos en la lista, manejar según sea necesario
+        return;
+    }
+
+    currentIndex = (currentIndex - 1 + lstContacto.size()) % lstContacto.size();
+    Contacto AntContacto = lstContacto.get(currentIndex);
+
+    FXMLLoader fxmlloader = new FXMLLoader();
+    fxmlloader.setLocation(getClass().getResource("plantilla_contacto.fxml"));
+    VBox vboxcontact = fxmlloader.load();
+    Plantilla_contactoController controlador = fxmlloader.getController();
+    controlador.setData(AntContacto);
+
+    // Limpia los nodos hijos antes de agregar el nuevo VBox
+    hbox_contactos.getChildren().clear();
+    hbox_contactos.getChildren().add(vboxcontact);
+
         
     }
 
+
+    
     @FXML
-    private void contacto_siguiente(ActionEvent event) {
+    private void contacto_siguiente(ActionEvent event) throws IOException {
+  
+         if (lstContacto.isEmpty()) {
+        // No hay elementos en la lista, manejar según sea necesario
+        return;
+    }
+         
+    currentIndex = (currentIndex + 1) % lstContacto.size();
+    Contacto SigContacto = lstContacto.get(currentIndex);
+
+    FXMLLoader fxmlloader = new FXMLLoader();
+    fxmlloader.setLocation(getClass().getResource("plantilla_contacto.fxml"));
+    VBox vboxcontact = fxmlloader.load();
+    Plantilla_contactoController controlador = fxmlloader.getController();
+    controlador.setData(SigContacto);
+
+    // Limpia los nodos hijos antes de agregar el nuevo VBox
+    hbox_contactos.getChildren().clear();
+    hbox_contactos.getChildren().add(vboxcontact);
+
+    
+    
+
     }
     
 }
