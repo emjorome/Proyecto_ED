@@ -29,6 +29,7 @@ import com.mycompany.gestion_contacto.NuevoContactoController;
 import java.util.ListIterator;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import modelo.Usuario;
 
 /**
@@ -64,6 +65,20 @@ public class Pantalla_ContactoController implements Initializable {
     
     private ListIterator<Contacto> listIterator;
     private int currentIndex = 0;
+    @FXML
+    private Label nombreMain;
+    @FXML
+    private Label nombreC;
+    @FXML
+    private Label trabocell;
+    @FXML
+    private Label ubicacionlbl;
+    @FXML
+    private Label tipocontac;
+    @FXML
+    private Label fechaNaci;
+    @FXML
+    private Label correo;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -214,6 +229,11 @@ public class Pantalla_ContactoController implements Initializable {
          
     currentIndex = (currentIndex + 1) % lstContacto.size();
     Contacto SigContacto = lstContacto.get(currentIndex);
+    
+    nombreMain.setText(SigContacto.getNombre()+" "+SigContacto.getApellido());
+    nombreC.setText(SigContacto.getListTelefonos().get(0).getNumeroTelefono());
+    trabocell.setText(SigContacto.getListTelefonos().get(1).getNumeroTelefono());
+    
 
     FXMLLoader fxmlloader = new FXMLLoader();
     fxmlloader.setLocation(getClass().getResource("plantilla_contacto.fxml"));
