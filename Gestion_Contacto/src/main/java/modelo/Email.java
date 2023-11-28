@@ -18,5 +18,21 @@ public class Email implements Serializable{
        
     }
 
+    public String getNombreEmail() {
+        return nombreEmail;
+    }
+
+    public void setNombreEmail(String nombreEmail) {
+        this.nombreEmail = nombreEmail;
+    }
+
+    public String getDuenoEmail() {
+        return duenoEmail;
+    }
+
+    public void setDuenoEmail(String duenoEmail) {
+        this.duenoEmail = duenoEmail;
+    }
+
     
 }

@@ -19,5 +19,21 @@ public class Fecha implements Serializable{
         this.nomFecha = nomFecha;
         this.fecha = fecha;
     }
+
+    public String getNomFecha() {
+        return nomFecha;
+    }
+
+    public void setNomFecha(String nomFecha) {
+        this.nomFecha = nomFecha;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
     
 }
