@@ -7,6 +7,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Date;
+import java.util.ListIterator;
 import javafx.scene.image.Image;
 
 /**
@@ -144,5 +145,9 @@ public class Contacto implements Serializable{
     public String toString(){
         return nombre + " " + apellido;
     }
+    
+    public ListIterator<Contacto> obtenerListIterator() {
+            return contactosRelacionados.listIterator();
+        }
 
 }

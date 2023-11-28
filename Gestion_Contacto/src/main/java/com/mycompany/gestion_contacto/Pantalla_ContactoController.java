@@ -63,7 +63,6 @@ public class Pantalla_ContactoController implements Initializable {
     @FXML
     private Button btnNext;
     
-    private ListIterator<Contacto> listIterator;
     private int currentIndex = 0;
     @FXML
     private Label nombreMain;
@@ -79,12 +78,16 @@ public class Pantalla_ContactoController implements Initializable {
     private Label fechaNaci;
     @FXML
     private Label correo;
+    private ListIterator<Contacto> listIterator;
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        // cargarContactoPrincipal();
       cargar_Imagenes();
       cargarContactoPrincipal();
+      
       
 
        
@@ -93,21 +96,25 @@ public class Pantalla_ContactoController implements Initializable {
         try {
             LinkedList<Contacto> lstContactos = contacto.getContactosRelacionados();
               int contador=0;
-            for(Contacto c: lstContacto){
-              
+              ListIterator<Contacto> it = lstContactos.listIterator();
+            //for(Contacto c: lstContacto){
+              while(it.hasNext()){
                 FXMLLoader fxmlloader= new FXMLLoader();
                 fxmlloader.setLocation(getClass().getResource("plantilla_contacto.fxml"));
                 VBox vboxcontact= fxmlloader.load();
                 Plantilla_contactoController controlador= fxmlloader.getController();
-               controlador.setData(c);
+               controlador.setData(it.next());
                
                hbox_contactos.getChildren().add(vboxcontact);
                contador++;
+               
+              
                 if (contador==1) {
                     break;
                     
                 }
-            }
+              }
+            //}
         } catch (Exception e) {
         }
         
@@ -118,6 +125,7 @@ public class Pantalla_ContactoController implements Initializable {
         try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/contactoSelec.text"))){
             contacto = (Contacto) in.readObject();
             lstContacto = contacto.getContactosRelacionados();
+            listIterator = contacto.obtenerListIterator();
         }catch(FileNotFoundException f){
             f.printStackTrace();
         }catch(IOException io){
@@ -193,16 +201,26 @@ public class Pantalla_ContactoController implements Initializable {
 */
        
     }
-
+    
+//    public ListIterator<Contacto> cargarIterator(){
+//        cargarContactoPrincipal();
+//        ListIterator<Contacto> it1 = lstContacto.listIterator();
+//        return it1;
+//    }
+    
     @FXML
     private void contacto_anterior(ActionEvent event) throws IOException {
     if (lstContacto.isEmpty()) {
         // No hay elementos en la lista, manejar según sea necesario
         return;
     }
+    //ListIterator<Contacto> it1 = lstContacto.listIterator();
+//    currentIndex = (currentIndex - 1 + lstContacto.size()) % lstContacto.size();
+//    Contacto AntContacto = lstContacto.get(currentIndex);
+//        ListIterator it1 = cargarIterator();
+        
+     Contacto AntContacto = listIterator.previous();
 
-    currentIndex = (currentIndex - 1 + lstContacto.size()) % lstContacto.size();
-    Contacto AntContacto = lstContacto.get(currentIndex);
 
     FXMLLoader fxmlloader = new FXMLLoader();
     fxmlloader.setLocation(getClass().getResource("plantilla_contacto.fxml"));
@@ -218,17 +236,25 @@ public class Pantalla_ContactoController implements Initializable {
     }
 
 
-    
+
     @FXML
     private void contacto_siguiente(ActionEvent event) throws IOException {
-  
+//        cargarContactoPrincipal();
+//        ListIterator<Contacto> it1 = lstContacto.listIterator();
+        
+//        ListIterator<Contacto> it1 = cargarIterator();
+        
          if (lstContacto.isEmpty()) {
         // No hay elementos en la lista, manejar según sea necesario
         return;
     }
-         
-    currentIndex = (currentIndex + 1) % lstContacto.size();
-    Contacto SigContacto = lstContacto.get(currentIndex);
+         //ListIterator<Contacto> it2 = lstContacto.listIterator();
+//    currentIndex = (currentIndex + 1) % lstContacto.size();
+//    Contacto SigContacto = lstContacto.get(currentIndex);
+        
+//        Contacto SigContacto = it1.next();
+            Contacto SigContacto = listIterator.next();
+
     
     nombreMain.setText(SigContacto.getNombre()+" "+SigContacto.getApellido());
     nombreC.setText(SigContacto.getListTelefonos().get(0).getNumeroTelefono());
@@ -244,6 +270,7 @@ public class Pantalla_ContactoController implements Initializable {
     // Limpia los nodos hijos antes de agregar el nuevo VBox
     hbox_contactos.getChildren().clear();
     hbox_contactos.getChildren().add(vboxcontact);
+    
 
     
     
