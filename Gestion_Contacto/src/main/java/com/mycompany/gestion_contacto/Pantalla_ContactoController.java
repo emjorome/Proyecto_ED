@@ -26,7 +26,11 @@ import modelo.Conta_Prueba;
 import modelo.Contacto;
 import modelo.CreandoContactos;
 import com.mycompany.gestion_contacto.NuevoContactoController;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.Comparator;
 import java.util.ListIterator;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -37,7 +41,7 @@ import modelo.Usuario;
  *
  * @author Danny
  */
-public class Pantalla_ContactoController implements Initializable {
+public class Pantalla_ContactoController {
 
     Contacto contacto;
     @FXML
@@ -80,8 +84,7 @@ public class Pantalla_ContactoController implements Initializable {
     @FXML
     private Label correo;
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize() {
        // cargarContactoPrincipal();
       cargar_Imagenes();
       cargarContactoPrincipal();
@@ -250,4 +253,71 @@ public class Pantalla_ContactoController implements Initializable {
 
     }
     
+    public void editarContacto(){
+        Contacto contactoEditar = lstContacto.get(currentIndex);
+        
+        
+    }
+    
+    
+    
+    public void removerContacto() {
+        Contacto contactoRemover = lstContacto.get(currentIndex);
+        
+        contacto.getContactosRelacionados().remove(contactoRemover);
+        serializarContacto(contacto);
+        actualizarUsuarios(contacto);
+        
+        Platform.runLater(() -> {
+            initialize();
+        });
+    }
+    
+    public void serializarContacto(Contacto c){
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/contactoSelec.text"))){
+            out.writeObject(c);
+            out.flush();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
+    }
+    
+    public void actualizarUsuarios(Contacto c){
+        LinkedList<Usuario> lst = new LinkedList<>();
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/usuarios.text"))){
+            lst = (LinkedList<Usuario>) in.readObject();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        
+        Comparator<Contacto> cmp = (c1,c2) -> {
+            int i = c1.getNombre().compareTo(c2.getNombre());
+            int j = c1.getApellido().compareTo(c2.getApellido());
+            
+            if(i==0 && j==0) return 0;
+            
+            return 1;
+        };
+        
+        for(int i = 0; i<lst.size(); i++){
+            if(cmp.compare(lst.get(i).getContacto(), c) == 0){
+                lst.get(i).setContacto(c);
+            }
+        }
+        
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/usuarios.text"))){
+            out.writeObject(lst);
+            out.flush();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
+    }
 }
