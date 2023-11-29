@@ -254,12 +254,25 @@ public class Pantalla_ContactoController {
     }
     
     public void editarContacto(){
-        Contacto contactoEditar = lstContacto.get(currentIndex);
+        serializarPosicion();
         
-        
+        try {
+            App.setRoot("editarContacto");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
     
-    
+    public void serializarPosicion(){
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/posicion.text"))){
+            out.writeObject(currentIndex);
+            out.flush();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
+    }
     
     public void removerContacto() {
         Contacto contactoRemover = lstContacto.get(currentIndex);

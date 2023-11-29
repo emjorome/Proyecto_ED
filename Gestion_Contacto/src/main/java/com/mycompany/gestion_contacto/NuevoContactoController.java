@@ -49,23 +49,13 @@ public class NuevoContactoController implements Initializable {
     @FXML
     private VBox vbTelefono;
     @FXML
-    private GridPane GridTelefono;
-    @FXML
     private VBox vbFecha;
-    @FXML
-    private GridPane GridFecha;
     @FXML
     private VBox vbCorreo;
     @FXML
-    private GridPane GridCorreo;
-    @FXML
     private VBox vbContacto;
     @FXML
-    private HBox hbContacto;
-    @FXML
     private VBox vbFoto;
-    @FXML
-    private GridPane GridFoto;
     @FXML
     private ComboBox<Contacto> cmbContactos;
     @FXML
@@ -83,6 +73,16 @@ public class NuevoContactoController implements Initializable {
     
     Contacto contactoPrincipal;
     LinkedList<Contacto> lstContactos;
+    @FXML
+    private GridPane GridTelefono;
+    @FXML
+    private GridPane GridFecha;
+    @FXML
+    private GridPane GridCorreo;
+    @FXML
+    private HBox hbContacto;
+    @FXML
+    private GridPane GridFoto;
     
     /**
      * Initializes the controller class.
@@ -96,6 +96,7 @@ public class NuevoContactoController implements Initializable {
         tipoContacto.getItems().add("EMPRESA");
     }
     
+    @FXML
     public void crearContacto(){
         if(condicionObligatoria()){
             Direccion dic = new Direccion(nomDireccion.getText(),ubicacion.getText(),ciudad.getText(),pais.getText());
@@ -307,6 +308,7 @@ public class NuevoContactoController implements Initializable {
         serializarUsuarios(lstActual);
     }
     
+    @FXML
     public void salir(){
         try {
             App.setRoot("Pantalla_Contacto");
@@ -315,6 +317,7 @@ public class NuevoContactoController implements Initializable {
         }
     }
     
+    @FXML
     public void añadirGridTelefono()  {
         GridPane gridTel = new GridPane();
         gridTel.add(new Label("Número:"), 0, 0);
@@ -326,6 +329,7 @@ public class NuevoContactoController implements Initializable {
         });
     }
     
+    @FXML
     public void añadirGridFecha()  {
         GridPane grid = new GridPane();
         grid.add(new Label("Fecha:"), 0, 0);
@@ -337,6 +341,7 @@ public class NuevoContactoController implements Initializable {
         });
     }
     
+    @FXML
     public void añadirGridCorreo()  {
         GridPane grid = new GridPane();
         grid.add(new Label("Correo:"), 0, 0);
@@ -348,6 +353,7 @@ public class NuevoContactoController implements Initializable {
         });
     } 
     
+    @FXML
     public void añadirGridFoto()  {
         GridPane grid = new GridPane();
         grid.add(new Label("Dirección de la Foto:"), 0, 0);
@@ -361,6 +367,7 @@ public class NuevoContactoController implements Initializable {
         });
     }
     
+    @FXML
     public void añadirGridContacto()  {
         HBox hb = new HBox();
         hb.setSpacing(50);
