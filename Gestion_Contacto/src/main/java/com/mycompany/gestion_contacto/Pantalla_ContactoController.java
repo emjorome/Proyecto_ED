@@ -217,8 +217,7 @@ public class Pantalla_ContactoController {
         return;
     }
     
-
-    //currentIndex = (currentIndex + 1) % lstContacto.size();
+    //currentIndex = (currentIndex + 1) % LCDE.size();
    
     SigContacto = SigContacto1;
     SigContacto1 = SigContacto2;
@@ -276,15 +275,13 @@ public class Pantalla_ContactoController {
 
 @FXML
 private void contacto_siguiente(ActionEvent event) throws IOException {
-
     if (lstContacto.isEmpty()) {
         // No hay elementos en la lista, manejar según sea necesario
         return;
     }
     
 
-
-    //currentIndex = (currentIndex + 1) % lstContacto.size();
+    //currentIndex = (currentIndex + 1) % LCDE.size();
    
     SigContacto1 = SigContacto;
     SigContacto2 = LCDE.obtenerSiguiente(SigContacto);
@@ -352,7 +349,7 @@ private void contacto_siguiente(ActionEvent event) throws IOException {
     
     public void serializarPosicion(){
         try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/posicion.text"))){
-            out.writeObject(currentIndex);
+            out.writeObject(contacto.getContactosRelacionados().indexOf(SigContacto1));
             out.flush();
         }catch(FileNotFoundException f){
             f.printStackTrace();
@@ -361,15 +358,13 @@ private void contacto_siguiente(ActionEvent event) throws IOException {
         }
     }
     
-    public void removerContacto() {
-        Contacto contactoRemover = lstContacto.get(currentIndex);
-        
-        contacto.getContactosRelacionados().remove(contactoRemover);
-        serializarContacto(contacto);
-        actualizarUsuarios(contacto);
-        
+    public void removerContacto() {       
         Platform.runLater(() -> {
+            contacto.getContactosRelacionados().remove(contacto.getContactosRelacionados().indexOf(SigContacto1));
+            serializarContacto(contacto);
+            actualizarUsuarios(contacto);
             hbox_contactos.getChildren().clear();
+            LCDE.clear();
             initialize();
         });
     }

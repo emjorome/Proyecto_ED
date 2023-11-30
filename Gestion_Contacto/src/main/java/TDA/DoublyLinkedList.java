@@ -184,7 +184,7 @@ public class DoublyLinkedList<E> implements List<E>,Iterable<E> {
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        first = null;
     }
 
    @Override
@@ -270,8 +270,19 @@ public class DoublyLinkedList<E> implements List<E>,Iterable<E> {
     }
 
     @Override
-    public int indexOf(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int indexOf(Object element) {
+        if (element == null) {
+            return -1;
+        }
+
+        int j = 0;
+        for (Node<E> i = first; i != null; i = i.getNext()) {
+            if (i.getContent().equals(element)) {
+                return j;
+            }
+            j++;
+        }
+        return -1;
     }
 
     @Override
