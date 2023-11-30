@@ -11,28 +11,32 @@ import java.io.Serializable;
  * @author Danny
  */
 public class Email implements Serializable{
-    private String nombreEmail;
-    private String duenoEmail;
+    private String correo;
+    private String uso;
 
-    public Email(String nombreEmail, String duenoEmail) {
-       
+    public Email(String correo, String uso) {
+       this.correo = correo;
+       this.uso = uso;
     }
 
-    public String getNombreEmail() {
-        return nombreEmail;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setNombreEmail(String nombreEmail) {
-        this.nombreEmail = nombreEmail;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getDuenoEmail() {
-        return duenoEmail;
+    public String getUso() {
+        return uso;
     }
 
-    public void setDuenoEmail(String duenoEmail) {
-        this.duenoEmail = duenoEmail;
+    public void setUso(String uso) {
+        this.uso = uso;
     }
+
 
     
+
+
 }

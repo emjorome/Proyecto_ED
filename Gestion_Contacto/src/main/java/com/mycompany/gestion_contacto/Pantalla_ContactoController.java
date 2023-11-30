@@ -27,7 +27,11 @@ import modelo.Conta_Prueba;
 import modelo.Contacto;
 import modelo.CreandoContactos;
 import com.mycompany.gestion_contacto.NuevoContactoController;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.Comparator;
 import java.util.ListIterator;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -42,7 +46,7 @@ import modelo.Usuario;
  *
  * @author Danny
  */
-public class Pantalla_ContactoController implements Initializable {
+public class Pantalla_ContactoController {
 
     Contacto contacto;
     @FXML
@@ -85,14 +89,16 @@ public class Pantalla_ContactoController implements Initializable {
     @FXML
     private Label correo;
     
+
     static DoublyLinkedList<Contacto> LCDE= new DoublyLinkedList<>();
       Contacto SigContacto ;
     Contacto SigContacto1 ;
     Contacto SigContacto2 ;
     Contacto SigContacto3 ;
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+
+    public void initialize() {
+
        // cargarContactoPrincipal();
       cargar_Imagenes();
       cargarContactoPrincipal();
@@ -222,7 +228,7 @@ public class Pantalla_ContactoController implements Initializable {
     nombreMain.setText(SigContacto1.getNombre() + " " + SigContacto.getApellido());
     nombreC.setText(SigContacto1.getListTelefonos().get(0).getNumeroTelefono());
     trabocell.setText(SigContacto1.getListTelefonos().get(1).getNumeroTelefono());
-    correo.setText(SigContacto1.getListaemails().get(0).getDuenoEmail());
+    correo.setText(SigContacto1.getListaemails().get(0).getCorreo());
     ubicacionlbl.setText(SigContacto1.getUbicacion().getPais()+","+SigContacto1.getUbicacion().getCiudad());
     tipocontac.setText(SigContacto1.getTipoContac().name());
     fechaNaci.setText(SigContacto1.getListafechas().get(0).getFecha()+"");
@@ -277,6 +283,7 @@ private void contacto_siguiente(ActionEvent event) throws IOException {
     }
     
 
+
     //currentIndex = (currentIndex + 1) % lstContacto.size();
    
     SigContacto1 = SigContacto;
@@ -287,7 +294,7 @@ private void contacto_siguiente(ActionEvent event) throws IOException {
     nombreMain.setText(SigContacto1.getNombre() + " " + SigContacto.getApellido());
     nombreC.setText(SigContacto1.getListTelefonos().get(0).getNumeroTelefono());
     trabocell.setText(SigContacto1.getListTelefonos().get(1).getNumeroTelefono());
-    correo.setText(SigContacto1.getListaemails().get(0).getDuenoEmail());
+    correo.setText(SigContacto1.getListaemails().get(0).getCorreo());
     ubicacionlbl.setText(SigContacto1.getUbicacion().getPais()+","+SigContacto1.getUbicacion().getCiudad());
     tipocontac.setText(SigContacto1.getTipoContac().name());
     fechaNaci.setText(SigContacto1.getListafechas().get(0).getFecha()+"");
@@ -331,7 +338,91 @@ private void contacto_siguiente(ActionEvent event) throws IOException {
     // Limpia los nodos hijos antes de agregar los nuevos VBox
     hbox_contactos.getChildren().clear();
     hbox_contactos.getChildren().addAll(vboxcontact, vboxcontact1, vboxcontact2, vboxcontact3);
+
 }
+  public void editarContacto(){
+        serializarPosicion();
+        
+        try {
+            App.setRoot("editarContacto");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void serializarPosicion(){
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/posicion.text"))){
+            out.writeObject(currentIndex);
+            out.flush();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
+    }
+    
+    public void removerContacto() {
+        Contacto contactoRemover = lstContacto.get(currentIndex);
+        
+        contacto.getContactosRelacionados().remove(contactoRemover);
+        serializarContacto(contacto);
+        actualizarUsuarios(contacto);
+        
+        Platform.runLater(() -> {
+            hbox_contactos.getChildren().clear();
+            initialize();
+        });
+    }
+    
+    public void serializarContacto(Contacto c){
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/contactoSelec.text"))){
+            out.writeObject(c);
+            out.flush();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
+    }
+    
+    public void actualizarUsuarios(Contacto c){
+        LinkedList<Usuario> lst = new LinkedList<>();
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/usuarios.text"))){
+            lst = (LinkedList<Usuario>) in.readObject();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        
+        Comparator<Contacto> cmp = (c1,c2) -> {
+            int i = c1.getNombre().compareTo(c2.getNombre());
+            int j = c1.getApellido().compareTo(c2.getApellido());
+            
+            if(i==0 && j==0) return 0;
+            
+            return 1;
+        };
+        
+        for(int i = 0; i<lst.size(); i++){
+            if(cmp.compare(lst.get(i).getContacto(), c) == 0){
+                lst.get(i).setContacto(c);
+            }
+        }
+        
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/usuarios.text"))){
+            out.writeObject(lst);
+            out.flush();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
+    }
+
+
 
 public  void iniciaLCDE(){
     for (int i = 0; i < lstContacto.size(); i++) {

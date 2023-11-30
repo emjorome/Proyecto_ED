@@ -13,7 +13,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Date;
-import javafx.scene.image.Image;
 
 /**
  *

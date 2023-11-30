@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gestion_contacto.EditarContactoController">
+   <top>
+      <Label text="Editar Contacto" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="32.0" prefWidth="600.0" spacing="30.0" style="-fx-background-color: lightGrey;" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#guardarCambios" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Guardar" />
+            <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Borrar" />
+            <Button mnemonicParsing="false" onAction="#salir" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Cancelar" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="17.0" style="-fx-background-color: lightGrey;" text="Datos Obligatorios">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <GridPane>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="84.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="215.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="71.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="236.0" minWidth="10.0" prefWidth="228.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Nombre:" />
+                  <TextField fx:id="nombre" maxWidth="-Infinity" GridPane.columnIndex="1" />
+                  <Label text="Apellido:" GridPane.rowIndex="1" />
+                  <TextField fx:id="apellido" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Pais:" GridPane.columnIndex="2" />
+                  <TextField fx:id="pais" maxWidth="-Infinity" GridPane.columnIndex="3" />
+                  <Label text="Ciudad:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="ciudad" maxWidth="-Infinity" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label text="Ubicacion:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="ubicacion" maxWidth="-Infinity" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label text="NomDireccion:" GridPane.rowIndex="2" />
+                  <TextField fx:id="nomDireccion" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: lightGrey;" text="Datos Opcionales">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <VBox prefHeight="58.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefWidth="600.0" style="-fx-background-color: lightGrey;" text="Tipo de Contacto" />
+                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="600.0" spacing="50.0">
+                     <children>
+                        <Label text="Tipo:" />
+                        <ComboBox fx:id="tipoContacto" prefWidth="150.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="vbTelefono" prefHeight="66.0" prefWidth="600.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="6.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: lightGrey;">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="63.0" text="Teléfono" />
+                        <Button mnemonicParsing="false" onAction="#añadirGridTelefono" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="vbFecha" prefHeight="68.0" prefWidth="600.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="6.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: lightGrey;">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="58.0" text="Fecha" />
+                        <Button mnemonicParsing="false" onAction="#añadirGridFecha" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="vbCorreo" prefHeight="62.0" prefWidth="600.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="20.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: lightGrey;">
+                     <children>
+                        <Label text="Correo Electrónico" />
+                        <Button mnemonicParsing="false" onAction="#añadirGridCorreo" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="vbContacto" prefHeight="69.0" prefWidth="600.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: lightGrey;">
+                     <children>
+                        <Label text="Contactos Relacionados" />
+                        <Button mnemonicParsing="false" onAction="#añadirGridContacto" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="vbFoto" prefHeight="127.0" prefWidth="600.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="3.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: lightGrey;">
+                     <children>
+                        <Label text="Foto" />
+                        <Button mnemonicParsing="false" onAction="#añadirGridFoto" style="-fx-background-color: white; -fx-border-color: lightGrey;" text="Añadir" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

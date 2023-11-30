@@ -18,8 +18,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modelo.Contacto;
 import modelo.Direccion;
@@ -36,22 +34,8 @@ import modelo.UtilitariaContacto;
  *
  * @author USUARIO
  */
-public class NuevoContactoController implements Initializable {
+public class EditarContactoController implements Initializable {
 
-    @FXML
-    private ComboBox<String> tipoContacto;
-    @FXML
-    private VBox vbTelefono;
-    @FXML
-    private VBox vbFecha;
-    @FXML
-    private VBox vbCorreo;
-    @FXML
-    private VBox vbContacto;
-    @FXML
-    private VBox vbFoto;
-    @FXML
-    private ComboBox<Contacto> cmbContactos;
     @FXML
     private TextField nombre;
     @FXML
@@ -64,36 +48,46 @@ public class NuevoContactoController implements Initializable {
     private TextField ubicacion;
     @FXML
     private TextField nomDireccion;
+    @FXML
+    private ComboBox<String> tipoContacto;
+    @FXML
+    private VBox vbTelefono;
+    @FXML
+    private VBox vbFecha;
+    @FXML
+    private VBox vbCorreo;
+    @FXML
+    private VBox vbContacto;
+    @FXML
+    private VBox vbFoto;
     
-    private Contacto contactoPrincipal;
     private LinkedList<Contacto> lstContactos;
+    private Contacto contactoPrincipal;
+    private int currentIndex;
     private UtilitariaContacto u;
-    @FXML
-    private GridPane GridTelefono;
-    @FXML
-    private GridPane GridFecha;
-    @FXML
-    private GridPane GridCorreo;
-    @FXML
-    private HBox hbContacto;
-    @FXML
-    private GridPane GridFoto;
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         u = new UtilitariaContacto();
+        currentIndex = 0;
         lstContactos = new LinkedList<>();
         deserializarContactos();
-        u.contactosCMB(cmbContactos, lstContactos);
         tipoContacto.getItems().add("PERSONA");
         tipoContacto.getItems().add("EMPRESA");
+        agregarInformacionBasica();
+        agregarTipoContacto();
+        agregarTelefonos();
+        agregarContactos();
+        agregarFotos();
+        agregarEmails();
+        agregarFechas();
     }
     
     @FXML
-    public void crearContacto(){
+    public void guardarCambios(){
         if(condicionObligatoria()){
             Direccion dic = new Direccion(nomDireccion.getText(),ubicacion.getText(),ciudad.getText(),pais.getText());
             Contacto c = new Contacto(nombre.getText(),apellido.getText(),dic);
@@ -126,16 +120,16 @@ public class NuevoContactoController implements Initializable {
             LinkedList<Foto> lstFoto = almacenarFoto();
             if(!lstFoto.isEmpty()) c.setListaFotos(lstFoto);
             
-            //Añadir a la lista
-            lstContactos.add(c);
+            //Guardar cambios      
+            lstContactos.remove(currentIndex);
+            lstContactos.add(currentIndex, c);
             contactoPrincipal.setContactosRelacionados(lstContactos);
             serializarContacto();
             actualizarUsuarios();
+            
+            //salir
+            salir();
         }
-    }
-    
-    public LinkedList<Foto> almacenarFoto() {
-        return u.almacenarFoto(vbFoto);
     }
     
     public LinkedList<Contacto> almacenarContactos() {
@@ -153,13 +147,50 @@ public class NuevoContactoController implements Initializable {
     public LinkedList<Telefono> almacenarTelefonos(){
         return u.almacenarTelefonos(vbTelefono);
     }
-     
+    
+    public LinkedList<Foto> almacenarFoto() {
+        return u.almacenarFoto(vbFoto);
+    }
+    
     public boolean condicionObligatoria(){
         return nombre.getText() != null && apellido.getText() != null && 
                 pais.getText() != null && ciudad.getText() != null
                 && ubicacion.getText() != null && nomDireccion.getText() != null;
-    }   
+    }
     
+    public void agregarInformacionBasica(){
+        nombre.setText(contactoPrincipal.getContactosRelacionados().get(currentIndex).getNombre());
+        apellido.setText(contactoPrincipal.getContactosRelacionados().get(currentIndex).getApellido());
+        pais.setText(contactoPrincipal.getContactosRelacionados().get(currentIndex).getUbicacion().getPais());
+        ciudad.setText(contactoPrincipal.getContactosRelacionados().get(currentIndex).getUbicacion().getCiudad());
+        ubicacion.setText(contactoPrincipal.getContactosRelacionados().get(currentIndex).getUbicacion().getUbicacion());
+        nomDireccion.setText(contactoPrincipal.getContactosRelacionados().get(currentIndex).getUbicacion().getNombreDireccion());
+    }
+    
+    public void agregarTipoContacto(){
+        u.agregarTipoContacto(contactoPrincipal, currentIndex, tipoContacto);
+    }
+    
+    public void agregarTelefonos(){
+        u.agregarTelefonos(contactoPrincipal, currentIndex, vbTelefono);
+    }
+    
+    public void agregarContactos(){
+        u.agregarContactos(contactoPrincipal, currentIndex, vbContacto, lstContactos);
+    }
+    
+    public void agregarFotos(){
+        u.agregarFotos(contactoPrincipal, currentIndex, vbFoto);
+    }
+    
+    public void agregarFechas(){
+        u.agregarFechas(contactoPrincipal, currentIndex, vbFecha);
+    }
+    
+    public void agregarEmails(){
+        u.agregarEmails(contactoPrincipal, currentIndex, vbCorreo);
+    }
+
     public void deserializarContactos(){
         try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/contactoSelec.text"))){
             contactoPrincipal = (Contacto) in.readObject();
@@ -170,8 +201,44 @@ public class NuevoContactoController implements Initializable {
             io.printStackTrace();
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
-        } 
+        }
+        
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/posicion.text"))){
+            currentIndex = (int) in.readObject();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
+    
+    @FXML
+    public void añadirGridTelefono()  {
+        u.añadirGridTelefono(vbTelefono);
+    }
+    
+    @FXML
+    public void añadirGridFecha()  {
+        u.añadirGridFecha(vbFecha);
+    }
+    
+    @FXML
+    public void añadirGridCorreo()  {
+        u.añadirGridCorreo(vbCorreo);
+    }
+    
+    @FXML
+    public void añadirGridFoto()  {
+        u.añadirGridFoto(vbFoto);
+    }
+    
+    @FXML
+    public void añadirGridContacto()  {
+        u.añadirGridContacto(vbContacto, lstContactos);
+    }
+    
     
     public void serializarContacto() {
         try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/contactoSelec.text"))){
@@ -229,30 +296,5 @@ public class NuevoContactoController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }
-    
-    @FXML
-    public void añadirGridTelefono()  {
-        u.añadirGridTelefono(vbTelefono);
-    }
-    
-    @FXML
-    public void añadirGridFecha()  {
-        u.añadirGridFecha(vbFecha);
-    }
-    
-    @FXML
-    public void añadirGridCorreo()  {
-        u.añadirGridCorreo(vbCorreo);
-    } 
-    
-    @FXML
-    public void añadirGridFoto()  {
-        u.añadirGridFoto(vbFoto);
-    }
-    
-    @FXML
-    public void añadirGridContacto()  {
-        u.añadirGridContacto(vbContacto, lstContactos);
     }
 }
