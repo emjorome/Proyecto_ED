@@ -232,6 +232,18 @@ public class Pantalla_ContactoController {
     ubicacionlbl.setText(SigContacto1.getUbicacion().getPais()+","+SigContacto1.getUbicacion().getCiudad());
     tipocontac.setText(SigContacto1.getTipoContac().name());
     fechaNaci.setText(SigContacto1.getListafechas().get(0).getFecha()+"");
+    
+     String s= SigContacto1.getListaFotos().get(0).getDireccionImagen();
+         
+    
+        try {
+            FileInputStream fil = new FileInputStream(s);
+            Image i= new Image(fil);
+            fotoperfil1.setImage(i);
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
 
     // Cargar el archivo FXML una vez
     FXMLLoader fxmlloader = new FXMLLoader();
@@ -298,6 +310,18 @@ private void contacto_siguiente(ActionEvent event) throws IOException {
     ubicacionlbl.setText(SigContacto1.getUbicacion().getPais()+","+SigContacto1.getUbicacion().getCiudad());
     tipocontac.setText(SigContacto1.getTipoContac().name());
     fechaNaci.setText(SigContacto1.getListafechas().get(0).getFecha()+"");
+    
+    String s= SigContacto1.getListaFotos().get(0).getDireccionImagen();
+         
+    
+        try {
+            FileInputStream fil = new FileInputStream(s);
+            Image i= new Image(fil);
+            fotoperfil1.setImage(i);
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
 
     // Cargar el archivo FXML una vez
     FXMLLoader fxmlloader = new FXMLLoader();
@@ -428,7 +452,6 @@ public  void iniciaLCDE(){
     for (int i = 0; i < lstContacto.size(); i++) {
         LCDE.add(lstContacto.get(i));
     }
-
 }
     
 }
