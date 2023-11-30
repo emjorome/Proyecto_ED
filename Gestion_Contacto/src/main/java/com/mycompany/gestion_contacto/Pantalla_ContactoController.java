@@ -282,6 +282,7 @@ public class Pantalla_ContactoController {
         actualizarUsuarios(contacto);
         
         Platform.runLater(() -> {
+            hbox_contactos.getChildren().clear();
             initialize();
         });
     }

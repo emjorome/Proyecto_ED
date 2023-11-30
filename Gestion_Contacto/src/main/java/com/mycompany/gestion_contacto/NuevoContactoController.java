@@ -11,19 +11,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -36,6 +29,7 @@ import modelo.Foto;
 import modelo.Telefono;
 import modelo.TipoContacto;
 import modelo.Usuario;
+import modelo.UtilitariaContacto;
 
 /**
  * FXML Controller class
@@ -71,8 +65,9 @@ public class NuevoContactoController implements Initializable {
     @FXML
     private TextField nomDireccion;
     
-    Contacto contactoPrincipal;
-    LinkedList<Contacto> lstContactos;
+    private Contacto contactoPrincipal;
+    private LinkedList<Contacto> lstContactos;
+    private UtilitariaContacto u;
     @FXML
     private GridPane GridTelefono;
     @FXML
@@ -89,9 +84,10 @@ public class NuevoContactoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        u = new UtilitariaContacto();
         lstContactos = new LinkedList<>();
         deserializarContactos();
-        contactosCMB(cmbContactos);
+        u.contactosCMB(cmbContactos, lstContactos);
         tipoContacto.getItems().add("PERSONA");
         tipoContacto.getItems().add("EMPRESA");
     }
@@ -139,105 +135,30 @@ public class NuevoContactoController implements Initializable {
     }
     
     public LinkedList<Foto> almacenarFoto() {
-        LinkedList<Foto> lstFoto = new LinkedList<>();
-        for(int i = 1; i<vbFoto.getChildren().size(); i++){
-            GridPane gridFoto = (GridPane)vbFoto.getChildren().get(i);
-            TextField tdireccion = (TextField)getNodeFromGridPane(gridFoto,0,1);
-            TextField tnomFoto = (TextField)getNodeFromGridPane(gridFoto,1,1);
-            TextField tdescripcion = (TextField)getNodeFromGridPane(gridFoto,2,1);
-            
-            if(tdireccion.getText() != null && tnomFoto.getText() != null && tdescripcion.getText() != null){
-                lstFoto.add(new Foto(tdireccion.getText(),tnomFoto.getText(),tdescripcion.getText()));
-            }
-        }
-        return lstFoto;
+        return u.almacenarFoto(vbFoto);
     }
     
     public LinkedList<Contacto> almacenarContactos() {
-        LinkedList<Contacto> lstContactosRel = new LinkedList<>();
-        for(int i = 1; i<vbContacto.getChildren().size(); i++){
-            HBox hbContacto = (HBox) vbContacto.getChildren().get(i);
-            ComboBox<Contacto> cmb = (ComboBox<Contacto>) hbContacto.getChildren().get(1);
-            if(cmb.getValue() != null){
-                lstContactosRel.add(cmb.getValue());
-            }
-        }
-        return lstContactosRel;
+        return u.almacenarContactos(vbContacto);
     }
     
     public LinkedList<Email> almacenarCorreos() {
-        LinkedList<Email> lstCorreos = new LinkedList<>();
-        for(int i = 1; i<vbCorreo.getChildren().size(); i++){
-            GridPane gridCorreo = (GridPane)vbCorreo.getChildren().get(i);
-            TextField tcorreo = (TextField)getNodeFromGridPane(gridCorreo,0,1);
-            TextField UsoCorreo = (TextField)getNodeFromGridPane(gridCorreo,0,3);
-            
-            if(tcorreo.getText() != null && UsoCorreo.getText() != null){
-                lstCorreos.add(new Email(tcorreo.getText(),UsoCorreo.getText()));
-            }
-        }
-        return lstCorreos;
+        return u.almacenarCorreos(vbCorreo);
     }
     
     public LinkedList<Fecha> almacenarFechas(){
-        LinkedList<Fecha> lstFechas = new LinkedList<>();
-        for(int i = 1; i<vbFecha.getChildren().size(); i++){
-            GridPane gridFecha = (GridPane)vbFecha.getChildren().get(i);
-            Node nodeDate = getNodeFromGridPane(gridFecha,0,1);
-            
-            TextField tdescripcion = (TextField)getNodeFromGridPane(gridFecha,0,3);
-            
-            if(nodeDate != null && tdescripcion.getText() != null){
-                DatePicker date = (DatePicker)nodeDate;
-                LocalDate local = date.getValue();
-                Date fecha = Date.from(local.atStartOfDay(ZoneId.systemDefault()).toInstant());
-                lstFechas.add(new Fecha(tdescripcion.getText(),fecha));
-            }
-        }
-        return lstFechas;
+        return u.almacenarFechas(vbFecha);
     }
     
     public LinkedList<Telefono> almacenarTelefonos(){
-        LinkedList<Telefono> lstTelefonos = new LinkedList<>();
-        for(int i = 1; i<vbTelefono.getChildren().size(); i++){
-            GridPane gridTel = (GridPane)vbTelefono.getChildren().get(i);
-            TextField tnumero = (TextField)getNodeFromGridPane(gridTel,0,1);
-            TextField tdescripcion = (TextField)getNodeFromGridPane(gridTel,0,3);
-            
-            if(tnumero.getText() != null && tdescripcion.getText() != null){
-                lstTelefonos.add(new Telefono(tnumero.getText(),tdescripcion.getText()));
-            }
-        }
-        return lstTelefonos;
-    }
-    
-    public Node getNodeFromGridPane(GridPane gridPane, int row, int col) {
-        for (Node node : gridPane.getChildren()) {
-            Integer i = GridPane.getColumnIndex(node);
-            Integer j = GridPane.getRowIndex(node);
-            
-            if(i == null) i = 0;
-            if(j == null) j = 0;
-            
-            if (i == col && j == row) {
-                return node;
-            }
-        }
-        return null;
+        return u.almacenarTelefonos(vbTelefono);
     }
      
     public boolean condicionObligatoria(){
         return nombre.getText() != null && apellido.getText() != null && 
                 pais.getText() != null && ciudad.getText() != null
                 && ubicacion.getText() != null && nomDireccion.getText() != null;
-    }
-    
-    
-    public void contactosCMB(ComboBox cmb){
-        for(Contacto c: lstContactos){
-            cmb.getItems().add(c);
-        }
-    }
+    }   
     
     public void deserializarContactos(){
         try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/contactoSelec.text"))){
@@ -252,20 +173,6 @@ public class NuevoContactoController implements Initializable {
         } 
     }
     
-    public LinkedList<Usuario> deserializarUsuarios(){
-        LinkedList<Usuario> lst = new LinkedList<>();
-        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/usuarios.text"))){
-            lst = (LinkedList<Usuario>) in.readObject();
-        }catch(FileNotFoundException f){
-            f.printStackTrace();
-        }catch(IOException io){
-            io.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-        return lst;
-    }
-    
     public void serializarContacto() {
         try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/contactoSelec.text"))){
             out.writeObject(contactoPrincipal);
@@ -277,26 +184,25 @@ public class NuevoContactoController implements Initializable {
         }
     }
     
-    public void serializarUsuarios(LinkedList<Usuario> lst){
-        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/usuarios.text"))){
-            out.writeObject(lst);
-            out.flush();
+    public void actualizarUsuarios(){
+        LinkedList<Usuario> lstActual = new LinkedList<>();
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/usuarios.text"))){
+            lstActual = (LinkedList<Usuario>) in.readObject();
         }catch(FileNotFoundException f){
             f.printStackTrace();
         }catch(IOException io){
             io.printStackTrace();
-        }
-    }
-    
-    public void actualizarUsuarios(){
-        LinkedList<Usuario> lstActual = deserializarUsuarios();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }            
         
         Comparator<Contacto> cmp = (c1,c2) -> {
-            int i = -1;
-            if(c1.getNombre().compareTo(c2.getNombre()) == 0 && c1.getApellido().compareTo(c2.getApellido()) == 0){
-                i = 0;
+            int i = c1.getNombre().compareTo(c2.getNombre());
+            int j = c1.getApellido().compareTo(c2.getApellido());
+            if(i == 0 && j == 0){
+                return 0;
             }
-            return i;
+            return -1;
         };
         
         for(Usuario u: lstActual){
@@ -305,7 +211,15 @@ public class NuevoContactoController implements Initializable {
                 lstActual.get(pos).setContacto(contactoPrincipal);
             }
         }
-        serializarUsuarios(lstActual);
+        
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos/usuarios.text"))){
+            out.writeObject(lstActual);
+            out.flush();
+        }catch(FileNotFoundException f){
+            f.printStackTrace();
+        }catch(IOException io){
+            io.printStackTrace();
+        }
     }
     
     @FXML
@@ -319,65 +233,26 @@ public class NuevoContactoController implements Initializable {
     
     @FXML
     public void añadirGridTelefono()  {
-        GridPane gridTel = new GridPane();
-        gridTel.add(new Label("Número:"), 0, 0);
-        gridTel.add(new TextField(),1,0);
-        gridTel.add(new Label("Descripción:"), 2, 0);
-        gridTel.add(new TextField(),3,0);
-        Platform.runLater(() -> {
-            vbTelefono.getChildren().add(gridTel);
-        });
+        u.añadirGridTelefono(vbTelefono);
     }
     
     @FXML
     public void añadirGridFecha()  {
-        GridPane grid = new GridPane();
-        grid.add(new Label("Fecha:"), 0, 0);
-        grid.add(new DatePicker(),1,0);
-        grid.add(new Label("Descripción:"), 2, 0);
-        grid.add(new TextField(),3,0);
-        Platform.runLater(() -> {
-            vbFecha.getChildren().add(grid);
-        });
+        u.añadirGridFecha(vbFecha);
     }
     
     @FXML
     public void añadirGridCorreo()  {
-        GridPane grid = new GridPane();
-        grid.add(new Label("Correo:"), 0, 0);
-        grid.add(new TextField(),1,0);
-        grid.add(new Label("Uso del Correo:"), 2, 0);
-        grid.add(new TextField(),3,0);
-        Platform.runLater(() -> {
-            vbCorreo.getChildren().add(grid);
-        });
+        u.añadirGridCorreo(vbCorreo);
     } 
     
     @FXML
     public void añadirGridFoto()  {
-        GridPane grid = new GridPane();
-        grid.add(new Label("Dirección de la Foto:"), 0, 0);
-        grid.add(new TextField(),1,0);
-        grid.add(new Label("Nombre de la Foto:"), 0, 1);
-        grid.add(new TextField(),1,1);
-        grid.add(new Label("Descripción:"), 0, 2);
-        grid.add(new TextField(),1,2);
-        Platform.runLater(() -> {
-            vbFoto.getChildren().add(grid);
-        });
+        u.añadirGridFoto(vbFoto);
     }
     
     @FXML
     public void añadirGridContacto()  {
-        HBox hb = new HBox();
-        hb.setSpacing(50);
-        hb.getChildren().add(new Label("Contacto:"));
-        ComboBox<Contacto> cmb = new ComboBox();
-        contactosCMB(cmb);
-        hb.getChildren().add(cmb);
-        Platform.runLater(() -> {
-            vbContacto.getChildren().add(hb);
-        });
+        u.añadirGridContacto(vbContacto, lstContactos);
     }
-    
 }
