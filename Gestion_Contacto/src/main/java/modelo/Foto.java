@@ -23,6 +23,30 @@ public class Foto implements Serializable{
         this.nombreFoto = nombreFoto;
         this.descripcion = descripcion;
     }
+
+    public String getDireccionImagen() {
+        return direccionImagen;
+    }
+
+    public void setDireccionImagen(String direccionImagen) {
+        this.direccionImagen = direccionImagen;
+    }
+
+    public String getNombreFoto() {
+        return nombreFoto;
+    }
+
+    public void setNombreFoto(String nombreFoto) {
+        this.nombreFoto = nombreFoto;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
     
     
 }

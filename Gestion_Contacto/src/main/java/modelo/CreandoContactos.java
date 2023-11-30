@@ -62,7 +62,7 @@ public class CreandoContactos implements Serializable{
         fechas_1.add(new Fecha("Cumpleaños", new Date(2003, 2, 8)));
         fechas_1.add(new Fecha("Graduacion", new Date(2020, 3, 6)));
         LinkedList<Foto> fotos_1 = new LinkedList<>();
-        fotos_1.add(new Foto("src\\main\\java\\perfil_Image\\Piero.png", "Foto perfil", "Perfil"));
+        fotos_1.add(new Foto("src\\main\\java\\perfil_Image\\Piero.jpg", "Foto perfil", "Perfil"));
         /*try {
             Image im1 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Piero.png"));
             fotos_1.add(new Foto(im1, "Foto perfil", "Perfil"));

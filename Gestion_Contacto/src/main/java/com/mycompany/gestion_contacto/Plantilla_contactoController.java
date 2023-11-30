@@ -4,11 +4,15 @@
  */
 package com.mycompany.gestion_contacto;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import modelo.Conta_Prueba;
 import modelo.Contacto;
 
@@ -25,6 +29,8 @@ public class Plantilla_contactoController implements Initializable {
     private Label lb_telefono;
     @FXML
     private Label lb_ubicacion;
+    @FXML
+    private ImageView fotoPlantilla;
 
     /**
      * Initializes the controller class.
@@ -62,5 +68,19 @@ public class Plantilla_contactoController implements Initializable {
         this.lb_nombre.setText(c.getNombre());
         this.lb_telefono.setText(c.getListTelefonoSimple());
         this.lb_ubicacion.setText(c.getUbicacion().getNombreDireccion());
+        
+        System.out.println(c.getListaFotos().get(0).getDireccionImagen());
+        
+        String s= c.getListaFotos().get(0).getDireccionImagen();
+         
+    
+        try {
+            FileInputStream fil = new FileInputStream(s);
+            Image i= new Image(fil);
+            fotoPlantilla.setImage(i);
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 }
