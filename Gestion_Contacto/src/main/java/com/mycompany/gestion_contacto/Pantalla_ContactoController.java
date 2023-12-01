@@ -31,8 +31,20 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.Comparator;
 import java.util.ListIterator;
+import java.util.Queue;
+import java.util.Stack;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
+import modelo.Usuario;
+
 import java.util.PriorityQueue;
 import java.util.Queue;
+
+import java.util.Stack;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,6 +53,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -63,7 +76,6 @@ public class Pantalla_ContactoController {
     private Button btnBuscar;
     @FXML
     private Button btnMenu;
-    @FXML
     private ImageView imgBuscar;
     @FXML
     private ImageView imgMenu;
@@ -102,11 +114,11 @@ public class Pantalla_ContactoController {
     Contacto SigContacto2 ;
     Contacto SigContacto3 ;
     @FXML
-    private TextField buscar_filtro;
-    @FXML
     private ComboBox<String> cbbordenar;
     @FXML
-    private ComboBox<String> cbbfiltrar;
+    private TextField txtFiltro;
+    @FXML
+    private ComboBox<String> cmbFiltro;
     
 
     public void initialize() {
@@ -114,8 +126,8 @@ public class Pantalla_ContactoController {
        // cargarContactoPrincipal();
       cargar_Imagenes();
       cargarContactoPrincipal();
-      
-
+      cmbFiltro.getItems().addAll("Nombre", "Apellido");
+       
        
         
       /*
@@ -197,7 +209,7 @@ public class Pantalla_ContactoController {
         try {
             FileInputStream fil = new FileInputStream(s);
             Image i= new Image(fil);
-            imgBuscar.setImage(i);
+            //imgBuscar.setImage(i);
             // Imagen del Menu
             FileInputStream fil2 = new FileInputStream(s2);
             Image i2= new Image(fil2);
@@ -469,7 +481,67 @@ public  void iniciaLCDE(){
 }
 
     @FXML
-    private void ActionBuscar(ActionEvent event) {
+    private void ActionBuscar(ActionEvent event) throws IOException {
+        
+        Stack<Contacto> resultadoStack = new Stack<>();
+
+        // Filtrar la lista directamente
+        switch (cmbFiltro.getSelectionModel().getSelectedItem()) {
+            case "Nombre":
+                for (Contacto contacto : LCDE) {
+                    if (contacto.getNombre().toLowerCase().contains(txtFiltro.getText().toLowerCase())) {
+                        resultadoStack.push(contacto);
+                    }
+                }
+                break;
+            // Agregamos más casos según los tipos de filtro que desees implementar
+            case "Apellido":
+                for (Contacto contacto : LCDE) {
+                    if (contacto.getApellido().toLowerCase().contains(txtFiltro.getText().toLowerCase())) {
+                        resultadoStack.push(contacto);
+                    }
+                }
+                break;
+                
+
+            
+        }
+
+        // Actualizar nueva lista con los resultados del filtro
+        
+        DoublyLinkedList<Contacto> dc = new DoublyLinkedList<>();
+        dc.clear();
+        dc.addAll(resultadoStack);
+        FXMLLoader fxmlloader = new FXMLLoader();
+        fxmlloader.setLocation(getClass().getResource("plantilla_contacto.fxml"));
+        
+        for(Contacto c: dc){
+           
+            VBox vboxcontact = fxmlloader.load();
+            Plantilla_contactoController controlador = fxmlloader.getController();
+            controlador.setData(c);
+            hbox_contactos.getChildren().clear();
+            hbox_contactos.getChildren().addAll(vboxcontact);
+            
+            nombreMain.setText(c.getNombre() + " " + c.getApellido());
+            nombreC.setText(c.getListTelefonos().get(0).getNumeroTelefono());
+            trabocell.setText(c.getListTelefonos().get(1).getNumeroTelefono());
+            correo.setText(c.getListaemails().get(0).getCorreo());
+            ubicacionlbl.setText(c.getUbicacion().getPais()+","+c.getUbicacion().getCiudad());
+            tipocontac.setText(c.getTipoContac().name());
+            fechaNaci.setText(c.getListafechas().get(0).getFecha()+"");
+            String s= c.getListaFotos().get(0).getDireccionImagen();
+         
+    
+        try {
+            FileInputStream fil = new FileInputStream(s);
+            Image i= new Image(fil);
+            fotoperfil1.setImage(i);
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        }
         
         
     }
@@ -532,5 +604,10 @@ public  void iniciaLCDE(){
     }
 }
     
+
+
+ 
+
+
 
 

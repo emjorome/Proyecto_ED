@@ -154,7 +154,10 @@ public class DoublyLinkedList<E> implements List<E>,Iterable<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for (E element : c) {
+            add(element);
+        }
+        return true;
     }
 
     @Override
