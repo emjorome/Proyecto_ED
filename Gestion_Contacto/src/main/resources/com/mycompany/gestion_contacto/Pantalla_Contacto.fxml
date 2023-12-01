@@ -215,7 +215,7 @@
                         <Font name="Corbel Bold" size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cbbordenar" prefHeight="26.0" prefWidth="135.0" />
+                  <ComboBox fx:id="cbbordenar" onAction="#ActionOrder" prefHeight="26.0" prefWidth="135.0" />
                   <Label prefHeight="38.0" prefWidth="70.0" text="Filtrar:">
                      <font>
                         <Font name="Corbel Bold" size="18.0" />

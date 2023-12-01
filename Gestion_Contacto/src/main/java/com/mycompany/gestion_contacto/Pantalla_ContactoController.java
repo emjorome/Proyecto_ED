@@ -31,7 +31,11 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.Comparator;
 import java.util.ListIterator;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
@@ -114,7 +118,7 @@ public class Pantalla_ContactoController {
 
        
         
-      
+      /*
         try {
             LinkedList<Contacto> lstContactos = contacto.getContactosRelacionados();
               int contador=0;
@@ -134,6 +138,7 @@ public class Pantalla_ContactoController {
             }
         } catch (Exception e) {
         }
+      */
         iniciaLCDE();
         SigContacto= LCDE.get(0) ;
     }
@@ -457,6 +462,10 @@ public  void iniciaLCDE(){
     for (int i = 0; i < lstContacto.size(); i++) {
         LCDE.add(lstContacto.get(i));
     }
+    ObservableList<String> lista= FXCollections.observableArrayList("Nombre y apellido","Pais","Fecha");
+    
+    cbbordenar.setItems(lista);
+    
 }
 
     @FXML
@@ -464,6 +473,64 @@ public  void iniciaLCDE(){
         
         
     }
-    
+
+    @FXML
+    private void ActionOrder(ActionEvent event) {
+        Queue<Contacto> cola;
+        if (cbbordenar.getSelectionModel().getSelectedItem().equals("Pais")) {
+            
+            
+        }
+        else if (cbbordenar.getSelectionModel().getSelectedItem().equals("Nombre y apellido")){
+           
+            Comparator<Contacto> cmp= new Comparator<Contacto>() {
+                @Override
+                public int compare(Contacto c1, Contacto c2) {
+                    return c1.getNombre().compareTo(c2.getNombre());
+                }
+            };
+            cola= new PriorityQueue<>(cmp);
+            cola.addAll(lstContacto);
+            LCDE.clear();
+            for (Contacto contacto1 : cola) {
+                System.out.println(contacto1.getNombre());
+                LCDE.add(contacto1);
+            }
+         SigContacto= LCDE.get(0) ;
+            try {
+                contacto_anterior(event);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+                
+        }else if (cbbordenar.getSelectionModel().getSelectedItem().equals("Fecha")){
+       Comparator<Contacto> cmp= new Comparator<Contacto>() {
+                @Override
+                public int compare(Contacto c1, Contacto c2) {
+                return c1.getListafechas().get(0).getFecha().compareTo(c2.getListafechas().get(0).getFecha());
+                }
+            };
+            cola= new PriorityQueue<>(cmp);
+            cola.addAll(lstContacto);
+            LCDE.clear();
+            for (Contacto contacto1 : cola) {
+                System.out.println(contacto1.getNombre());
+                LCDE.add(contacto1);
+            }
+         SigContacto= LCDE.get(0) ;
+            try {
+                contacto_anterior(event);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+            
+            
+    }
+        
+    }
 }
+    
+
 
