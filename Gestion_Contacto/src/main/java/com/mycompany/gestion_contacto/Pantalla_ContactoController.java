@@ -562,7 +562,7 @@ public  void iniciaLCDE(){
                 }
             };
             cola= new PriorityQueue<>(cmp);
-            cola.addAll(lstContacto);
+            cola.addAll(LCDE);
             LCDE.clear();
             for (Contacto contacto1 : cola) {
                 System.out.println(contacto1.getNombre());
