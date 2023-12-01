@@ -144,23 +144,17 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="buscar_filtro" prefHeight="26.0" prefWidth="149.0">
+                  <TextField fx:id="txtFiltro" prefHeight="26.0" prefWidth="149.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </TextField>
                   <Button fx:id="btnBuscar" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#ActionBuscar" styleClass="transparent" stylesheets="@../../../styles/pantalla_contacto.css">
-                     <graphic>
-                        <ImageView fx:id="imgBuscar" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../java/perfil_Image/busqueda_icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
                   </Button>
+                  <Button fx:id="btnBuscar" mnemonicParsing="false" onAction="#ActionBuscar" text="search" />
                   <Button fx:id="btnMenu" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="transparent" stylesheets="@../../../styles/pantalla_contacto.css">
                      <graphic>
                         <ImageView fx:id="imgMenu" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -177,7 +171,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="112.0" prefWidth="685.0" spacing="20.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="142.0" style="-fx-background-color: #54D39D;" styleClass="most-contacted-layout" stylesheets="@../../../styles/pantalla_contacto.css" text="Kalifa" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="142.0" style="-fx-background-color: #54D39D;" styleClass="most-contacted-layout" stylesheets="@../../../styles/pantalla_contacto.css" text="Estudio" textFill="WHITE">
                      <font>
                         <Font name="Corbel" size="24.0" />
                      </font>
@@ -224,7 +218,7 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="cbbfiltrar" prefHeight="26.0" prefWidth="139.0" />
+                  <ComboBox fx:id="cmbFiltro" prefHeight="26.0" prefWidth="139.0" />
                </children>
             </HBox>
             <HBox fx:id="hbox_contactos" prefHeight="250.0" prefWidth="685.0" spacing="10.0" VBox.vgrow="ALWAYS">
