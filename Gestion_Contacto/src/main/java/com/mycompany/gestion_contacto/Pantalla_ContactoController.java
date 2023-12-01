@@ -34,7 +34,9 @@ import java.util.ListIterator;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -95,6 +97,12 @@ public class Pantalla_ContactoController {
     Contacto SigContacto1 ;
     Contacto SigContacto2 ;
     Contacto SigContacto3 ;
+    @FXML
+    private TextField buscar_filtro;
+    @FXML
+    private ComboBox<String> cbbordenar;
+    @FXML
+    private ComboBox<String> cbbfiltrar;
     
 
     public void initialize() {
@@ -361,6 +369,7 @@ private void contacto_siguiente(ActionEvent event) throws IOException {
     hbox_contactos.getChildren().addAll(vboxcontact, vboxcontact1, vboxcontact2, vboxcontact3);
 
 }
+    @FXML
   public void editarContacto(){
         serializarPosicion();
         
@@ -382,6 +391,7 @@ private void contacto_siguiente(ActionEvent event) throws IOException {
         }
     }
     
+    @FXML
     public void removerContacto() {       
         Platform.runLater(() -> {
             contacto.getContactosRelacionados().remove(contacto.getContactosRelacionados().indexOf(SigContacto1));
@@ -448,6 +458,12 @@ public  void iniciaLCDE(){
         LCDE.add(lstContacto.get(i));
     }
 }
+
+    @FXML
+    private void ActionBuscar(ActionEvent event) {
+        
+        
+    }
     
 }
 
