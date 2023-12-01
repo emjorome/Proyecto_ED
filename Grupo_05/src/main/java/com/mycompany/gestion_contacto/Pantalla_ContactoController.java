@@ -25,20 +25,9 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.Comparator;
 import java.util.ListIterator;
-import java.util.Queue;
-import java.util.Stack;
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import modelo.Usuario;
-
 import java.util.PriorityQueue;
 import java.util.Queue;
-
 import java.util.Stack;
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -112,39 +101,16 @@ public class Pantalla_ContactoController {
     public void initialize() {
 
        // cargarContactoPrincipal();
-      cargar_Imagenes();
-      cargarContactoPrincipal();
-      cmbFiltro.getItems().addAll("Nombre", "Apellido");
-       
-       
-        
-      /*
-        try {
-            LinkedList<Contacto> lstContactos = contacto.getContactosRelacionados();
-              int contador=0;
-            for(Contacto c: lstContacto){
-              
-                FXMLLoader fxmlloader= new FXMLLoader();
-                fxmlloader.setLocation(getClass().getResource("plantilla_contacto.fxml"));
-                VBox vboxcontact= fxmlloader.load();
-                Plantilla_contactoController controlador= fxmlloader.getController();
-               controlador.setData(c);
-               
-               hbox_contactos.getChildren().add(vboxcontact);
-               contador++;
-                if (contador==1) {
-                    break;
-                }
-            }
-        } catch (Exception e) {
-        }
-      */
+        cargar_Imagenes();
+        cargarContactoPrincipal();
+        cmbFiltro.getItems().addAll("Nombre", "Apellido");
         iniciaLCDE();
         SigContacto= LCDE.get(0) ;
     }
 
     public void cargarContactoPrincipal(){
-        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos/contactoSelec.text"))){
+        try(ObjectInputStream in = new ObjectInputStream(
+                new FileInputStream("archivos/contactoSelec.text"))){
             contacto = (Contacto) in.readObject();
             lstContacto = contacto.getContactosRelacionados();
         }catch(FileNotFoundException f){
@@ -158,23 +124,6 @@ public class Pantalla_ContactoController {
     }
     
     public LinkedList<Contacto> listaconta(Contacto contacto){
-        
-//        LinkedList<Conta_Prueba> listContacto = new LinkedList<>();
-//         Conta_Prueba c1= new Conta_Prueba("Emilio", "85749644", "Cuenca, Ecuador");
-//          Conta_Prueba c2= new Conta_Prueba("Piero", "+6598 1451442", "Milagro, Ecuador");
-//          Conta_Prueba c3= new Conta_Prueba("Steben", "+6598 1451442", "Ecuador, Duran");
-//          Conta_Prueba c4= new Conta_Prueba("Marcelo", "+593 1451442", "Ecuador, Guayaquil");
-//        listContacto.addLast(c1);
-//        listContacto.addLast(c2);
-//        listContacto.addLast(c3);
-//        listContacto.addLast(c4);
-//         listContacto.addLast(c1);
-//          listContacto.addLast(c1);
-//        listContacto.addLast(c2);
-//        listContacto.addLast(c3);
-//        listContacto.addLast(c4);
-//         listContacto.addLast(c1);
-
         LinkedList<Contacto> contactos = contacto.getContactosRelacionados();
         return contactos;
     }
@@ -215,11 +164,6 @@ public class Pantalla_ContactoController {
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
-        
-      /*
-        Image imbus= new Image("\\src\\main\\java\\perfil_Image\\busqueda_icon.png");
-       imgBuscar.setImage(imbus);
-*/
        
     }
 

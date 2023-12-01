@@ -1,0 +1,31 @@
+
+.roundedvbox {
+    -fx-background-color: #EBC95E; /* Color de fondo, si es necesario */
+    -fx-background-radius: 0 0 50 50; /* Radio de las esquinas */
+    /* -fx-border-radius: 10; */
+}
+
+.button {
+     -fx-background-color: #EBC95E; /* Color de fondo, si es necesario */
+    -fx-background-radius: 50; /* Radio de las esquinas */
+    /* -fx-border-radius: 10; */
+    
+}
+
+.white-background {
+    -fx-background-color: #fff;
+}
+
+.transparent{
+    
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.most-contacted-layout{
+    -fx-background-radius: 0 35 35 35;   
+}
+
+.vbox-plantilla{
+    -fx-background-radius: 25 25 25 25;   
+     -fx-background-color: #F5F0AF;
+}
