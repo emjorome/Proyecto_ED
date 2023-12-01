@@ -11,7 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.LinkedList;
+//import java.util.LinkedList;
+import TDA.LinkedList;
 import java.util.Date;
 
 /**
@@ -25,14 +26,14 @@ public class CreandoContactos implements Serializable{
 
         //Persona Usuario 
         LinkedList<Telefono> tel_0 = new LinkedList<>();
-        tel_0.add(new Telefono("Personal","098-676-5837"));
-        tel_0.add(new Telefono("Trabajo", "098-354-1418"));
+        tel_0.addLast(new Telefono("Personal","098-676-5837"));
+        tel_0.addLast(new Telefono("Trabajo", "098-354-1418"));
         Direccion dic_0 = new Direccion("Casa", "Villa Club", "Daule", "Ecuador");
         LinkedList<Fecha> fechas_0 = new LinkedList<>();
-        fechas_0.add(new Fecha("Cumpleaños", new Date(1998, 3, 12)));
-        fechas_0.add(new Fecha("Graduacion", new Date(2016, 5, 8)));
+        fechas_0.addLast(new Fecha("Cumpleaños", new Date(1998, 3, 12)));
+        fechas_0.addLast(new Fecha("Graduacion", new Date(2016, 5, 8)));
         LinkedList<Foto> fotos_0 = new LinkedList<>();
-        fotos_0.add(new Foto("src\\main\\java\\perfil_Image\\Jennifer.jpg", "Foto perfil", "Perfil"));
+        fotos_0.addLast(new Foto("src\\main\\java\\perfil_Image\\Jennifer.jpg", "Foto perfil", "Perfil"));
         /*try {
             Image im0 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Jennifer.jpg"));
             fotos_0.add(new Foto(im0, "Foto perfil", "Perfil"));
@@ -40,8 +41,8 @@ public class CreandoContactos implements Serializable{
             ex.printStackTrace();
         }*/
         LinkedList<Email> emails_0 = new LinkedList<>();
-        emails_0.add(new Email("jennifer4411@gmail.com", "Personal"));
-        emails_0.add(new Email("jennifervaldez@empresa.com", "Trabajo"));
+        emails_0.addLast(new Email("jennifer4411@gmail.com", "Personal"));
+        emails_0.addLast(new Email("jennifervaldez@empresa.com", "Trabajo"));
         LinkedList<Contacto> crP_0 = new LinkedList<>();
         
         Contacto cJennifer = new Contacto("Jennifer","Valdez",dic_0);
@@ -54,14 +55,14 @@ public class CreandoContactos implements Serializable{
         
         //Persona 1 - Piero
         LinkedList<Telefono> tel_1 = new LinkedList<>();
-        tel_1.add(new Telefono("Personal","096-905-4199"));
-        tel_1.add(new Telefono("Casa", "285-6499"));
+        tel_1.addLast(new Telefono("Personal","096-905-4199"));
+        tel_1.addLast(new Telefono("Casa", "285-6499"));
         Direccion dic_1 = new Direccion("Casa", "Garzota", "Guayaquil", "Ecuador");
         LinkedList<Fecha> fechas_1 = new LinkedList<>();
-        fechas_1.add(new Fecha("Cumpleaños", new Date(2003, 2, 8)));
-        fechas_1.add(new Fecha("Graduacion", new Date(2020, 3, 6)));
+        fechas_1.addLast(new Fecha("Cumpleaños", new Date(2003, 2, 8)));
+        fechas_1.addLast(new Fecha("Graduacion", new Date(2020, 3, 6)));
         LinkedList<Foto> fotos_1 = new LinkedList<>();
-        fotos_1.add(new Foto("src\\main\\java\\perfil_Image\\Piero.jpg", "Foto perfil", "Perfil"));
+        fotos_1.addLast(new Foto("src\\main\\java\\perfil_Image\\Piero.jpg", "Foto perfil", "Perfil"));
         /*try {
             Image im1 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Piero.png"));
             fotos_1.add(new Foto(im1, "Foto perfil", "Perfil"));
@@ -69,7 +70,7 @@ public class CreandoContactos implements Serializable{
             ex.printStackTrace();
         }*/
         LinkedList<Email> emails_1 = new LinkedList<>();
-        emails_1.add(new Email("pazminopiero@gmail.com", "Personal"));
+        emails_1.addLast(new Email("pazminopiero@gmail.com", "Personal"));
         LinkedList<Contacto> crP_1 = new LinkedList<>();
         
         Contacto cPiero = new Contacto("Piero","Pazmino",dic_1);
@@ -82,14 +83,14 @@ public class CreandoContactos implements Serializable{
         
         //Persona 2 - Martha
         LinkedList<Telefono> tel_2 = new LinkedList<>();
-        tel_2.add(new Telefono("Personal","099-005-8888"));
-        tel_2.add(new Telefono("Casa","391-4523"));
+        tel_2.addLast(new Telefono("Personal","099-005-8888"));
+        tel_2.addLast(new Telefono("Casa","391-4523"));
         Direccion dic_2 = new Direccion("Casa Sauces","Sauces 8","Guayaquil","Ecuador");
         LinkedList<Fecha> fechas_2 = new LinkedList<>();
-        fechas_2.add(new Fecha("Cumpleaños",new Date(1996,4,7)));
-        fechas_2.add(new Fecha("Aniversario",new Date(2020,4,7)));
+        fechas_2.addLast(new Fecha("Cumpleaños",new Date(1996,4,7)));
+        fechas_2.addLast(new Fecha("Aniversario",new Date(2020,4,7)));
         LinkedList<Foto> fotos_2 = new LinkedList<>();
-        fotos_2.add(new Foto("src\\main\\java\\perfil_Image\\Martha.jpg", "Foto perfil", "Perfil"));
+        fotos_2.addLast(new Foto("src\\main\\java\\perfil_Image\\Martha.jpg", "Foto perfil", "Perfil"));
         /*try {
             Image im2 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Martha.jpg"));
             fotos_2.add(new Foto(im2, "Foto perfil", "Perfil"));
@@ -97,7 +98,7 @@ public class CreandoContactos implements Serializable{
             ex.printStackTrace();
         }*/
         LinkedList<Email> emails_2 = new LinkedList<>();
-        emails_2.add(new Email("marthitaoliva@gmail.com","Personal"));
+        emails_2.addLast(new Email("marthitaoliva@gmail.com","Personal"));
         LinkedList<Contacto> crP_2 = new LinkedList<>();
         
         Contacto cMartha = new Contacto("Martha","Reyes",dic_2);
@@ -110,14 +111,14 @@ public class CreandoContactos implements Serializable{
         
         //Persona 3 - Jason
         LinkedList<Telefono> tel_3 = new LinkedList<>();
-        tel_3.add(new Telefono("Personal","097-095-2848"));
-        tel_3.add(new Telefono("Casa","487-0912"));
+        tel_3.addLast(new Telefono("Personal","097-095-2848"));
+        tel_3.addLast(new Telefono("Casa","487-0912"));
         Direccion dic_3 = new Direccion("Casa Milagro","Milagro","Milagro","Ecuador");
         LinkedList<Fecha> fechas_3 = new LinkedList<>();
-        fechas_3.add(new Fecha("Cumpleaños",new Date(1995,3,12)));
-        fechas_3.add(new Fecha("Cumpleaños_Hijo",new Date(2022,2,10)));
+        fechas_3.addLast(new Fecha("Cumpleaños",new Date(1995,3,12)));
+        fechas_3.addLast(new Fecha("Cumpleaños_Hijo",new Date(2022,2,10)));
         LinkedList<Foto> fotos_3 = new LinkedList<>();
-        fotos_3.add(new Foto("src\\main\\java\\perfil_Image\\Jason.jpg", "Foto perfil", "Perfil"));
+        fotos_3.addLast(new Foto("src\\main\\java\\perfil_Image\\Jason.jpg", "Foto perfil", "Perfil"));
         /*try {
             Image im3 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Jason.jpg"));
             fotos_3.add(new Foto(im3, "Foto perfil", "Perfil"));
@@ -125,7 +126,7 @@ public class CreandoContactos implements Serializable{
             ex.printStackTrace();
         }*/
         LinkedList<Email> emails_3 = new LinkedList<>();
-        emails_3.add(new Email("jason34rt@gmail.com","Personal"));
+        emails_3.addLast(new Email("jason34rt@gmail.com","Personal"));
         LinkedList<Contacto> crP_3 = new LinkedList<>();
         
         Contacto cJason = new Contacto("Jason","Roldan",dic_3);
@@ -138,14 +139,14 @@ public class CreandoContactos implements Serializable{
         
         //Persona 4 - Jeremy
         LinkedList<Telefono> tel_4 = new LinkedList<>();
-        tel_4.add(new Telefono("Trabajo","097-156-3489"));
-        tel_4.add(new Telefono("Personal","091-312-4592"));
+        tel_4.addLast(new Telefono("Trabajo","097-156-3489"));
+        tel_4.addLast(new Telefono("Personal","091-312-4592"));
         Direccion dic_4 = new Direccion("Casa","Ciudad Celeste","Samborondon","Ecuador");
         LinkedList<Fecha> fechas_4 = new LinkedList<>();
-        fechas_4.add(new Fecha("Cumpleaños",new Date(1974,10,11)));
-        fechas_4.add(new Fecha("Fundacion Empresa",new Date(2002,6,8)));
+        fechas_4.addLast(new Fecha("Cumpleaños",new Date(1974,10,11)));
+        fechas_4.addLast(new Fecha("Fundacion Empresa",new Date(2002,6,8)));
         LinkedList<Foto> fotos_4 = new LinkedList<>();
-        fotos_4.add(new Foto("src\\main\\java\\perfil_Image\\Jeremy.jpg", "Foto perfil", "Perfil"));
+        fotos_4.addLast(new Foto("src\\main\\java\\perfil_Image\\Jeremy.jpg", "Foto perfil", "Perfil"));
         /*try {
             Image im4 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Jeremy.jpg"));
             fotos_4.add(new Foto(im4, "Foto perfil", "Perfil"));
@@ -153,8 +154,8 @@ public class CreandoContactos implements Serializable{
             ex.printStackTrace();
         }*/
         LinkedList<Email> emails_4 = new LinkedList<>();
-        emails_4.add(new Email("jeremyjefe@empresa.com","Trabajo"));
-        emails_4.add(new Email("jeremyAl@gmail.com","Personal"));
+        emails_4.addLast(new Email("jeremyjefe@empresa.com","Trabajo"));
+        emails_4.addLast(new Email("jeremyAl@gmail.com","Personal"));
         LinkedList<Contacto> crP_4 = new LinkedList<>();
         
         Contacto cJeremy = new Contacto("Jeremy","Dominguez",dic_4);
@@ -167,14 +168,14 @@ public class CreandoContactos implements Serializable{
         
         //Persona 5 - Claudio
         LinkedList<Telefono> tel_5 = new LinkedList<>();
-        tel_5.add(new Telefono("Personal","092-312-5671"));
-        tel_5.add(new Telefono("Trabajo","091-439-6230"));
+        tel_5.addLast(new Telefono("Personal","092-312-5671"));
+        tel_5.addLast(new Telefono("Trabajo","091-439-6230"));
         Direccion dic_5 = new Direccion("Casa","San Juan","Quito","Ecuador");
         LinkedList<Fecha> fechas_5 = new LinkedList<>();
-        fechas_5.add(new Fecha("Cumpleaños",new Date(1986,2,5)));
-        fechas_5.add(new Fecha("Aniversario",new Date(2014,4,7)));
+        fechas_5.addLast(new Fecha("Cumpleaños",new Date(1986,2,5)));
+        fechas_5.addLast(new Fecha("Aniversario",new Date(2014,4,7)));
         LinkedList<Foto> fotos_5 = new LinkedList<>();
-        fotos_5.add(new Foto("src\\main\\java\\perfil_Image\\Claudio.png", "Foto perfil", "Perfil"));
+        fotos_5.addLast(new Foto("src\\main\\java\\perfil_Image\\Claudio.png", "Foto perfil", "Perfil"));
         /*try {
             Image im5 = new Image(new FileInputStream("src\\main\\java\\perfil_Image\\Claudio.png"));
             fotos_5.add(new Foto(im5, "Foto perfil", "Perfil"));
@@ -182,8 +183,8 @@ public class CreandoContactos implements Serializable{
             ex.printStackTrace();
         }*/
         LinkedList<Email> emails_5 = new LinkedList<>();
-        emails_5.add(new Email("claudiochef@hotmail.com","Trabajo"));
-        emails_5.add(new Email("claudio543@gmail.com","Personal"));
+        emails_5.addLast(new Email("claudiochef@hotmail.com","Trabajo"));
+        emails_5.addLast(new Email("claudio543@gmail.com","Personal"));
         LinkedList<Contacto> crP_5 = new LinkedList<>();
         
         Contacto cClaudio = new Contacto("Claudio","Falconi",dic_5);
@@ -195,44 +196,44 @@ public class CreandoContactos implements Serializable{
         cClaudio.setFavorito(false);
         
         //Contactos para Piero
-        crP_1.add(cJennifer);
-        crP_1.add(cMartha);
-        crP_1.add(cClaudio);
-        crP_1.add(cJason);
-        crP_1.add(cJeremy);
+        crP_1.addLast(cJennifer);
+        crP_1.addLast(cMartha);
+        crP_1.addLast(cClaudio);
+        crP_1.addLast(cJason);
+        crP_1.addLast(cJeremy);
         cPiero.setContactosRelacionados(crP_1);
         
         //Contactos para Martha
-        crP_2.add(cJennifer);
-        crP_2.add(cPiero);
+        crP_2.addLast(cJennifer);
+        crP_2.addLast(cPiero);
         cMartha.setContactosRelacionados(crP_2);
         
         //Contactos para Jason
-        crP_3.add(cJennifer);
-        crP_3.add(cClaudio);
+        crP_3.addLast(cJennifer);
+        crP_3.addLast(cClaudio);
         cJason.setContactosRelacionados(crP_3);
         
         //Contactos para Jeremy
-        crP_4.add(cJennifer);
+        crP_4.addLast(cJennifer);
         cJeremy.setContactosRelacionados(crP_4);
         
         //Contactos Claudio
-        crP_5.add(cJennifer);
-        crP_5.add(cPiero);
-        crP_5.add(cJason);
+        crP_5.addLast(cJennifer);
+        crP_5.addLast(cPiero);
+        crP_5.addLast(cJason);
         cClaudio.setContactosRelacionados(crP_5);
         
         //Contactos para Usuario/Jennifer
-        crP_0.add(cPiero);
-        crP_0.add(cMartha);
-        crP_0.add(cJason);
-        crP_0.add(cJeremy);
-        crP_0.add(cClaudio);
+        crP_0.addLast(cPiero);
+        crP_0.addLast(cMartha);
+        crP_0.addLast(cJason);
+        crP_0.addLast(cJeremy);
+        crP_0.addLast(cClaudio);
         cJennifer.setContactosRelacionados(crP_0);
         
         //Creando Usuario para Jennifer
         Usuario uJennifer = new Usuario("jenny","123",cJennifer);
-        lstUsuarios.add(uJennifer);
+        lstUsuarios.addLast(uJennifer);
         serializarUsuarios(lstUsuarios);
 
     }

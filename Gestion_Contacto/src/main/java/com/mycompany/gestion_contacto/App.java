@@ -27,28 +27,6 @@ public class App extends Application {
         scene = new Scene(loadFXML("inicio"),900,650);//loadFXML("pantalla_contacto"), 640, 480);
         stage.setScene(scene);
         stage.show();
-        
-
-//        while (it.hasNext()) {            
-//            Integer next = it.next();
-//            System.out.println(next);
-//        }
-//        for (int i = 0; i < 10; i++) {
-//            Scanner sc = new Scanner(System.in);
-//            String ans = sc.nextLine();
-//            Integer ac = arr.get(0);
-//            System.out.println(ac);
-//            System.out.println("next o prev:");
-//            if(ans.equals("next")){
-//                Integer next = it.next();
-//                System.out.println(next);
-//               
-//            }
-//            else if (ans.equals("prev")){
-//                Integer prev = it.previous();
-//                System.out.println(prev);
-//            }
-//        }
 
     }
 

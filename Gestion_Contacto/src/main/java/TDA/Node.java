@@ -4,13 +4,15 @@
  */
 package TDA;
 
+import java.io.Serializable;
+
 
 
 /**
  *
  * @author Usuario
  */
-public class Node<E> {
+public class Node<E> implements Serializable{
     
      private E content;
     private Node<E> next;

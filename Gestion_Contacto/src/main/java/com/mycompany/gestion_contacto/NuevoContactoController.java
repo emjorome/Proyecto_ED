@@ -12,7 +12,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.Comparator;
-import java.util.LinkedList;
+//import java.util.LinkedList;
+import TDA.LinkedList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -127,7 +128,7 @@ public class NuevoContactoController implements Initializable {
             if(!lstFoto.isEmpty()) c.setListaFotos(lstFoto);
             
             //Añadir a la lista
-            lstContactos.add(c);
+            lstContactos.addLast(c);
             contactoPrincipal.setContactosRelacionados(lstContactos);
             serializarContacto();
             actualizarUsuarios();

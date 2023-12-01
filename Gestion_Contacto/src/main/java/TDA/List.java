@@ -45,5 +45,27 @@ public interface List<E> extends Iterable<E> {
     
     public boolean addAll (List<E> l);
     
+    public List<E> findIntersection (List<E> anotherList, Comparator<E> cmp);
+    
+    public List<E> removeDuplicates(Comparator<E> cmp);
+    
+    public int binarySearch(E element, Comparator<E> cmp);
+    
+    public boolean removeElement(E element, Comparator<E> cmp);
+    
+    public int getIndexOf(E element, Comparator<E> cmp);
+    
+    public List<Integer> getAllIndicesOf(E element, Comparator<E> cmp);
+    
+    public boolean sort(Comparator<E> cmp);
+    
+    public List<E> mergeSorted(List<E> anotherList, Comparator<E> cmp);
+    
+    public boolean insertSorted(E element, Comparator<E> cmp);
+    
+    public List<E> findUnion(List<E> anotherList, Comparator<E> cmp);
+    
+    public boolean containsAll(List<E> anotherList);
+    
 }
 

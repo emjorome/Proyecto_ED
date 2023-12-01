@@ -5,9 +5,10 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.Date;
 import javafx.scene.image.Image;
+import TDA.LinkedList;
 
 /**
  *
@@ -48,13 +49,7 @@ public class Contacto implements Serializable{
         this.nombre = nombre;
         this.apellido = apellido;
         this.ubicacion = ubicacion;
-    }
-
-    public Contacto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    
+    }      
 
     public String getNombre() {
         return nombre;

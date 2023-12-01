@@ -7,7 +7,8 @@ package modelo;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.LinkedList;
+//import java.util.LinkedList;
+import TDA.LinkedList;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
@@ -30,7 +31,7 @@ public class UtilitariaContacto {
             HBox hbContacto = (HBox) vbContacto.getChildren().get(i);
             ComboBox<Contacto> cmb = (ComboBox<Contacto>) hbContacto.getChildren().get(1);
             if(cmb.getValue() != null){
-                lstContactosRel.add(cmb.getValue());
+                lstContactosRel.addLast(cmb.getValue());
             }
         }
         return lstContactosRel;
@@ -44,7 +45,7 @@ public class UtilitariaContacto {
             TextField UsoCorreo = (TextField)getNodeFromGridPane(gridCorreo,0,3);
             
             if(tcorreo.getText() != null && UsoCorreo.getText() != null){
-                lstCorreos.add(new Email(tcorreo.getText(),UsoCorreo.getText()));
+                lstCorreos.addLast(new Email(tcorreo.getText(),UsoCorreo.getText()));
             }
         }
         return lstCorreos;
@@ -62,7 +63,7 @@ public class UtilitariaContacto {
                 DatePicker date = (DatePicker)nodeDate;
                 LocalDate local = date.getValue();
                 Date fecha = Date.from(local.atStartOfDay(ZoneId.systemDefault()).toInstant());
-                lstFechas.add(new Fecha(tdescripcion.getText(),fecha));
+                lstFechas.addLast(new Fecha(tdescripcion.getText(),fecha));
             }
         }
         return lstFechas;
@@ -76,7 +77,7 @@ public class UtilitariaContacto {
             TextField tdescripcion = (TextField)getNodeFromGridPane(gridTel,0,3);
             
             if(tnumero.getText() != null && tdescripcion.getText() != null){
-                lstTelefonos.add(new Telefono(tdescripcion.getText(),tnumero.getText()));
+                lstTelefonos.addLast(new Telefono(tdescripcion.getText(),tnumero.getText()));
             }
         }
         return lstTelefonos;
@@ -91,7 +92,7 @@ public class UtilitariaContacto {
             TextField tdescripcion = (TextField)getNodeFromGridPane(gridFoto,2,1);
             
             if(tdireccion.getText() != null && tnomFoto.getText() != null && tdescripcion.getText() != null){
-                lstFoto.add(new Foto(tdireccion.getText(),tnomFoto.getText(),tdescripcion.getText()));
+                lstFoto.addLast(new Foto(tdireccion.getText(),tnomFoto.getText(),tdescripcion.getText()));
             }
         }
         return lstFoto;
